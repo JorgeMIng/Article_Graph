@@ -1,0 +1,94 @@
+@prefix mod: <https://w3id.org/mod#> .
+@prefix ns: <http://open_science.com#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ns: a owl:Ontology ;
+    mod:createdWith <https://chowlk.linkeddata.es/> .
+
+ns:abstract a owl:DatatypeProperty ;
+    rdfs:label "abstract" ;
+    rdfs:domain ns:Paper ;
+    rdfs:range xsd:string .
+
+ns:acknowledges a owl:ObjectProperty ;
+    rdfs:label "acknowledges" ;
+    rdfs:domain ns:Paper ;
+    rdfs:range ns:Organization,
+        ns:Project .
+
+ns:age a owl:DatatypeProperty ;
+    rdfs:label "age" ;
+    rdfs:domain ns:Person ;
+    rdfs:range xsd:string .
+
+ns:author a owl:ObjectProperty ;
+    rdfs:label "author" ;
+    rdfs:domain ns:Person ;
+    rdfs:range ns:Paper .
+
+ns:belongs_to_topic a owl:ObjectProperty ;
+    rdfs:label "belongs_to_topic" ;
+    rdfs:domain ns:Paper ;
+    rdfs:range ns:Topic .
+
+ns:email a owl:DatatypeProperty ;
+    rdfs:label "email" ;
+    rdfs:domain ns:Person .
+
+ns:gender a owl:DatatypeProperty ;
+    rdfs:label "gender" ;
+    rdfs:domain ns:Person .
+
+ns:last_name a owl:DatatypeProperty ;
+    rdfs:label "last_name" ;
+    rdfs:domain ns:Person ;
+    rdfs:range xsd:string .
+
+ns:name a owl:DatatypeProperty ;
+    rdfs:label "name" ;
+    rdfs:domain ns:Organization,
+        ns:Person,
+        ns:Project,
+        ns:Topic ;
+    rdfs:range xsd:string .
+
+ns:release_date a owl:DatatypeProperty ;
+    rdfs:label "release_date" ;
+    rdfs:domain ns:Paper ;
+    rdfs:range xsd:date .
+
+ns:similar_to a owl:ObjectProperty ;
+    rdfs:label "similar_to" ;
+    rdfs:domain ns:Paper ;
+    rdfs:range ns:Paper .
+
+ns:title a owl:DatatypeProperty ;
+    rdfs:label "title" ;
+    rdfs:domain ns:Paper ;
+    rdfs:range xsd:string .
+
+rdfs:label a owl:DatatypeProperty ;
+    rdfs:label "label" ;
+    rdfs:domain ns:Organization,
+        ns:Paper,
+        ns:Person,
+        ns:Project,
+        ns:Topic ;
+    rdfs:range xsd:string .
+
+ns:Organization a owl:Class ;
+    rdfs:label "Organization" .
+
+ns:Project a owl:Class ;
+    rdfs:label "Project" .
+
+ns:Topic a owl:Class ;
+    rdfs:label "Topic" .
+
+ns:Person a owl:Class ;
+    rdfs:label "Person" .
+
+ns:Paper a owl:Class ;
+    rdfs:label "Paper" .
