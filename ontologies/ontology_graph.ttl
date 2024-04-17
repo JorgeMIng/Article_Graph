@@ -31,7 +31,13 @@ ns:author a owl:ObjectProperty ;
 ns:belongs_to_topic a owl:ObjectProperty ;
     rdfs:label "belongs_to_topic" ;
     rdfs:domain ns:Paper ;
-    rdfs:range ns:Topic .
+    rdfs:range ns:TopicBelonging .
+
+ns:degree a owl:DatatypeProperty ;
+    rdfs:label "degree" ;
+    rdfs:domain ns:Similarity,
+        ns:TopicBelonging ;
+    rdfs:range xsd:float .
 
 ns:email a owl:DatatypeProperty ;
     rdfs:label "email" ;
@@ -46,6 +52,11 @@ ns:last_name a owl:DatatypeProperty ;
     rdfs:domain ns:Person ;
     rdfs:range xsd:string .
 
+ns:member a owl:ObjectProperty ;
+    rdfs:label "member" ;
+    rdfs:domain ns:Person ;
+    rdfs:range ns:Organization .
+
 ns:name a owl:DatatypeProperty ;
     rdfs:label "name" ;
     rdfs:domain ns:Organization,
@@ -54,20 +65,30 @@ ns:name a owl:DatatypeProperty ;
         ns:Topic ;
     rdfs:range xsd:string .
 
+ns:paper1 a owl:ObjectProperty ;
+    rdfs:label "paper1" ;
+    rdfs:domain ns:Similarity ;
+    rdfs:range ns:Paper .
+
+ns:paper2 a owl:ObjectProperty ;
+    rdfs:label "paper2" ;
+    rdfs:domain ns:Similarity ;
+    rdfs:range ns:Paper .
+
 ns:release_date a owl:DatatypeProperty ;
     rdfs:label "release_date" ;
     rdfs:domain ns:Paper ;
     rdfs:range xsd:date .
 
-ns:similar_to a owl:ObjectProperty ;
-    rdfs:label "similar_to" ;
-    rdfs:domain ns:Paper ;
-    rdfs:range ns:Paper .
-
 ns:title a owl:DatatypeProperty ;
     rdfs:label "title" ;
     rdfs:domain ns:Paper ;
     rdfs:range xsd:string .
+
+ns:topic a owl:ObjectProperty ;
+    rdfs:label "topic" ;
+    rdfs:domain ns:TopicBelonging ;
+    rdfs:range ns:Topic .
 
 rdfs:label a owl:DatatypeProperty ;
     rdfs:label "label" ;
@@ -75,11 +96,10 @@ rdfs:label a owl:DatatypeProperty ;
         ns:Paper,
         ns:Person,
         ns:Project,
-        ns:Topic ;
+        ns:Similarity,
+        ns:Topic,
+        ns:TopicBelonging ;
     rdfs:range xsd:string .
-
-ns:Organization a owl:Class ;
-    rdfs:label "Organization" .
 
 ns:Project a owl:Class ;
     rdfs:label "Project" .
@@ -87,8 +107,18 @@ ns:Project a owl:Class ;
 ns:Topic a owl:Class ;
     rdfs:label "Topic" .
 
+ns:Organization a owl:Class ;
+    rdfs:label "Organization" .
+
+ns:Similarity a owl:Class ;
+    rdfs:label "Similarity" .
+
+ns:TopicBelonging a owl:Class ;
+    rdfs:label "Topic Belonging" .
+
 ns:Person a owl:Class ;
     rdfs:label "Person" .
 
 ns:Paper a owl:Class ;
     rdfs:label "Paper" .
+
