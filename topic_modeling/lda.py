@@ -8,27 +8,31 @@ Classes:
 
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.decomposition import LatentDirichletAllocation
-from .topic_modeling import ITopicModel
+from gensim.corpora import Dictionary
+from gensim.models import CoherenceModel
 
 
-class LDATopicModel(ITopicModel):
+class LDATopicModel():
     """
     A class to apply Latent Dirichlet Allocation (LDA) to a corpus of documents and extract topics.
     """
 
-    def __init__(self, corpus: list[str], num_topics: int = 5):
+    def __init__(self, corpus: list[str], num_topics: int = 3, num_words: int = 5):
         """
         Initialize the LDA topic model with the given corpus of documents and number of topics.
 
         Args:
         - corpus (list[str]): The corpus of documents.
-        - num_topics (int): The number of topics to extract. Default is 5.
+        - num_topics (int): The number of topics to extract. Default is 3.
+        - num_words (int): The number of words to include in each topic. Default is 5.
         """
         self.corpus: list[str] = corpus
         self.num_topics: int = num_topics
+        self.num_words: int = num_words
         self.vectorizer: CountVectorizer = None
         self.model: LatentDirichletAllocation = None
         self.topics: list[list[str]] = None
+        self.probs: list[float] = None
 
     def fit(self):
         """
@@ -36,6 +40,8 @@ class LDATopicModel(ITopicModel):
         """
         self.vectorizer = CountVectorizer()
         matrix = self.vectorizer.fit_transform(self.corpus)
+
+        self.vectorizer.get_feature_names_out()
 
         self.model = LatentDirichletAllocation(
             n_components=self.num_topics,
@@ -57,21 +63,30 @@ class LDATopicModel(ITopicModel):
         - list[float]: The topic distribution for the new document.
         """
         matrix = self.vectorizer.transform([doc])
-        return self.model.transform(matrix)[0]
+        self.probs = self.model.transform(matrix)[0]
 
-    def __get_topics(self, n_words: int = 5) -> list[list[str]]:
+    def calculate_coherence(self) -> float:
+        """
+        Calculate the coherence of the topics.
+        """
+        coherence_model = CoherenceModel(
+            topics=self.topics,
+            texts=[self.vectorizer.get_feature_names_out()],
+            dictionary=Dictionary([self.vectorizer.get_feature_names_out()]),
+            coherence='c_npmi'
+        )
+        return coherence_model.get_coherence()
+
+    def __get_topics(self) -> list[list[str]]:
         """
         Get the top words for each topic in the LDA model.
-
-        Args:
-        - n_words (int): The number of top words to retrieve for each topic. Default is 5.
 
         Returns:
         - list[list[str]]: The top words for each topic.
         """
-        feature_names = self.vectorizer.get_feature_names_out()
+        vocab = self.vectorizer.get_feature_names_out()
         topics = []
         for topic in self.model.components_:
-            topics.append([feature_names[i]
-                          for i in topic.argsort()[:-n_words-1:-1]])
+            topics.append([vocab[i]
+                          for i in topic.argsort()[:-self.num_words-1:-1]])
         return topics
