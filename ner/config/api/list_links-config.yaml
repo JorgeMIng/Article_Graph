@@ -1,0 +1,25 @@
+# General Config for any api
+data:
+  data_dir: data/PDFs
+  format: .pdf
+  recursive: True
+
+grobid:
+  cache: True
+  cache_dir: data/xmls
+  operation_key: processFulltextDocument
+  format: .grobid.tei.xml
+  recursive: True
+
+
+list:
+  style: default
+  index:
+    justify: right
+    style: white
+  refs:
+    justify: "left"
+    style: white
+  html:
+    justify: left
+    style: white
