@@ -1,18 +1,18 @@
 """
-This module contains the implementation of the LDATopicModel class,
+This module contains the implementation of the LDA class,
 which applies Latent Dirichlet Allocation (LDA) to a corpus of documents and extracts topics.
 
 Classes:
-- LDATopicModel: A class to apply LDA to a corpus of documents and extract topics.
+- LDA: A class to apply LDA to a corpus of documents and extract topics.
 """
 
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.decomposition import LatentDirichletAllocation
 from gensim.corpora import Dictionary
 from gensim.models import CoherenceModel
+from sklearn.decomposition import LatentDirichletAllocation
+from sklearn.feature_extraction.text import CountVectorizer
 
 
-class LDATopicModel():
+class LDA:
     """
     A class to apply Latent Dirichlet Allocation (LDA) to a corpus of documents and extract topics.
     """
@@ -29,26 +29,25 @@ class LDATopicModel():
         self.corpus: list[str] = corpus
         self.num_topics: int = num_topics
         self.num_words: int = num_words
-        self.vectorizer: CountVectorizer = None
-        self.model: LatentDirichletAllocation = None
-        self.topics: list[list[str]] = None
-        self.probs: list[float] = None
+        self.topics: list[list[str]] = []
+        self.vectorizer: CountVectorizer = CountVectorizer()
+        self.model: LatentDirichletAllocation = LatentDirichletAllocation(
+            n_components=num_topics, random_state=0
+        )
 
-    def fit(self):
+    def fit(self) -> None:
         """
         Fit the LDA model to the corpus of documents and extract the top words for each topic.
         """
-        self.vectorizer = CountVectorizer()
-        matrix = self.vectorizer.fit_transform(self.corpus)
+        X = self.vectorizer.fit_transform(self.corpus)
 
         self.vectorizer.get_feature_names_out()
 
         self.model = LatentDirichletAllocation(
-            n_components=self.num_topics,
-            random_state=0
+            n_components=self.num_topics, random_state=0
         )
 
-        self.model.fit(matrix)
+        self.model.fit(X)
 
         self.topics = self.__get_topics()
 
@@ -62,8 +61,8 @@ class LDATopicModel():
         Returns:
         - list[float]: The topic distribution for the new document.
         """
-        matrix = self.vectorizer.transform([doc])
-        self.probs = self.model.transform(matrix)[0]
+        X = self.vectorizer.transform([doc])
+        return self.model.transform(X)[0]
 
     def calculate_coherence(self) -> float:
         """
@@ -73,7 +72,7 @@ class LDATopicModel():
             topics=self.topics,
             texts=[self.vectorizer.get_feature_names_out()],
             dictionary=Dictionary([self.vectorizer.get_feature_names_out()]),
-            coherence='c_npmi'
+            coherence="c_npmi",
         )
         return coherence_model.get_coherence()
 
@@ -87,6 +86,7 @@ class LDATopicModel():
         vocab = self.vectorizer.get_feature_names_out()
         topics = []
         for topic in self.model.components_:
-            topics.append([vocab[i]
-                          for i in topic.argsort()[:-self.num_words-1:-1]])
+            topics.append(
+                [vocab[i] for i in topic.argsort()[: -self.num_words - 1: -1]]
+            )
         return topics
