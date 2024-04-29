@@ -1,5 +1,7 @@
 # all-MiniLM-L6-v2
 # pip install -U sentence-transformers
+from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
 
 # Lista de textos
 texts = ["Her name is Ramona, she is very clever", "Ramona is a very intelligent woman", "It is very clever to name her Ramona"]
