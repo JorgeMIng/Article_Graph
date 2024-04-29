@@ -1,31 +1,35 @@
-# all-MiniLM-L6-v2
 # pip install -U sentence-transformers
+# all-MiniLM-L6-v2
+
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
-# Lista de textos
-texts = ["Her name is Ramona, she is very clever", "Ramona is a very intelligent woman", "It is very clever to name her Ramona"]
 
-# Inicializar el modelo SentenceTransformer
-model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+class MiniLM:
+    def __init__(self, texts):
+        # Initialize the MiniLM class with a list of texts
+        self.texts = texts
+        # Initialize the SentenceTransformer model
+        self.model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 
-# Calcular los embeddings para los textos
-embeddings = model.encode(texts)
+    def calculate_similarity(self):
+        # Calculate embeddings for the texts
+        embeddings = self.model.encode(self.texts)
 
-# Calcular la similitud coseno entre todos los pares de textos
-similarity_scores = cosine_similarity(embeddings)
+        # Calculate cosine similarity between all pairs of texts
+        similarity_scores = cosine_similarity(embeddings)
 
-# Crear una lista para almacenar los resultados de similitud
-resultados_similitud = []
+        # Create a list to store similarity results
+        similarity_results = []
 
-# Llenar la lista con los resultados de similitud
-for i in range(len(texts)):
-    for j in range(i+1, len(texts)):
-        # cada elemento de la lista es un diccionario
-        resultado = {'idtexto1': i, 'idtexto2': j, 'similarity': similarity_scores[i][j]}
-        resultados_similitud.append(resultado)
+        # Fill the list with similarity results
+        for i in range(len(self.texts)):
+            for j in range(i+1, len(self.texts)):
+                # Each element of the list is a dictionary containing similarity information
+                result = {'text_id1': i, 'text_id2': j, 'similarity': similarity_scores[i][j]}
+                similarity_results.append(result)
 
-# Imprimir resultados
-print("Resultados de similitud:")
-for resultado in resultados_similitud:
-    print(resultado)
+        # Print similarity results
+        print("Similarity results:")
+        for result in similarity_results:
+            print(result)
