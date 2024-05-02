@@ -1,18 +1,26 @@
-# pip install -U sentence-transformers
-# all-MiniLM-L6-v2
-
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
 
-class MiniLM:
-    def __init__(self, texts):
-        # Initialize the MiniLM class with a list of texts
+class Model:
+    def __init__(self, texts, model_name):
+        """
+        Initialize the class.
+
+        Args:
+        texts (list): List of texts to be used for similarity calculation.
+        model_name (str): Name of the SentenceTransformer model to use.
+        """
+        # Initialize the texts
         self.texts = texts
+
         # Initialize the SentenceTransformer model
-        self.model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+        self.model = SentenceTransformer(model_name)
 
     def calculate_similarity(self):
+        """
+        Calculate the cosine similarity between all pairs of texts.
+        """
         # Calculate embeddings for the texts
         embeddings = self.model.encode(self.texts)
 
