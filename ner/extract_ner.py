@@ -149,6 +149,44 @@ def extract_ners(file,pipe):
 
 
 import re
+def extract_award_identifiers(text):
+    # Expresiones regulares para identificadores de premios
+    regex_patterns = {
+        "NIH": r'(?:#)?\b[1-9][A-Z\d]{3}[A-Z]{2}\d{6}(?:-[AS]?\d+)?\b',
+        "DOD": r'(?:#)?\b[A-Z\d]{6}-\d{2}-[123]-\d{4}\b',
+        "NASA": r'(?:#)?\b(?:80|NN)[A-Z]+\d{2}[A-Z\d]+\b',
+        "Education": r'(?:#)?\b[A-Z]+\d+[A-Z]\d{2}[A-Z\d]+\b'
+    }
+
+    # Lista para almacenar todos los identificadores únicos encontrados
+    all_identifiers = []
+
+    # Aplicar cada expresión regular al texto y almacenar los resultados
+    for pattern in regex_patterns.values():
+        identifiers = re.findall(pattern, text)
+        all_identifiers.extend(identifiers)
+
+    # Eliminar duplicados
+    unique_identifiers = list(set(all_identifiers))
+
+    return unique_identifiers
+
+def get_projects_names(text):
+    # Obtener identificadores de premios del texto
+    identifiers = extract_award_identifiers(text)
+    
+    # Lista para almacenar nombres y códigos asociados
+    names_and_codes = []
+
+    # Iterar sobre los identificadores y buscar los nombres correspondientes
+    for identifier in identifiers:
+        # Buscar el nombre del proyecto antes del identificador
+        match = re.search(rf'(\w+)\s+(?:grant|grants|award|awards|code|codes)\s+{re.escape(identifier)}', text, re.IGNORECASE)
+        if match:
+            names_and_codes.append(match.group(1))
+
+    return names_and_codes
+
 def extract_projects(file):
     
     acno = extract_element_soup(file,None,"div","acknowledgement")
@@ -157,84 +195,64 @@ def extract_projects(file):
         for elements in acno:
             texts = texts + " "+ elements.text
        
-    return re.findall(r'\b#?[A-Z\d-]+(?:-\d+){3,}\b', texts),re.findall(r'(\b[A-Z\d&-]+\b)\s*(?:award[s]?|grant)\s*#?[A-Z\d-]+(?:-\d+){3,}\b',texts)
+    return extract_award_identifiers(texts),get_projects_names(texts)
 
-def extract_projects_complex(file):
-    acno = extract_element_soup(file,None,"div","acknowledgement")
-    texts =""
-    if len(acno)>0:
-        for elements in acno:
-            texts = texts + " "+ elements.text
 
-# Definimos un patrón para buscar nombres y sus respectivos identificadores con #
-    patron_awards = r'([A-Z\d&-]+)\s*awards\s*((?:#?[A-Z\d-]+(?:-\d+){3,}(?:\s*and\s*#?[A-Z\d-]+(?:-\d+){3,})*)+)\b'
 
-    # Definimos un patrón para buscar nombres y sus respectivos identificadores con grant
-    patron_grant = r'([A-Z\d&-]+)\s*grant\s*((?:#?[A-Z\d-]+(?:-\d+){3,}))\b'
-
-    # Encontramos todas las coincidencias con awards
-    resultados_awards = re.findall(patron_awards, texts)
-
-    # Encontramos todas las coincidencias con grant
-    resultados_grant = re.findall(patron_grant, texts)
-
-    # Creamos una lista de tuplas para almacenar los resultados
-    resultado_final = []
-
-    # Función para agregar resultados a la lista final
-    def agregar_resultados(resultados):
-        for match in resultados:
-            nombre = match[0]
-            identificadores = match[1].split(' and ')
-            for identificador in identificadores:
-                resultado_final.append((identificador, nombre))
-
-    # Agregamos los resultados de awards
-    agregar_resultados(resultados_awards)
-
-    # Agregamos los resultados de grant
-    for match in resultados_grant:
-        nombre = match[0]
-        identificador = match[1]
-        resultado_final.append((identificador, nombre))
-
-    return resultado_final
+def add_new_org(all_orgs,ner,seen_names):
+    
+    if ner["name"] in seen_names:
+        pos =seen_names.index(ner["name"])
+        ner["org_id"]=all_orgs[pos]["org_id"]
+        return all_orgs,ner,seen_names
+    else:
+        ner["org_id"]=len(all_orgs)
+        new_ner=ner.copy()
+        new_ner.pop("score", None)
+        all_orgs.append(new_ner)
+        seen_names.append(ner["name"])
 
 def get_all_ners(files,pipe):
+    all_orgs_relation=[]
     all_orgs=[]
+    seen_names = []
     for idx,file in enumerate(files):
         ners = extract_ners(file,pipe)
         if len(ners)>0:
             for ner in ners:
+                add_new_org(all_orgs,ner,seen_names)
                 ner["paper_id"]=idx
-        all_orgs.extend(ners)
-    return all_orgs
+        all_orgs_relation.extend(ners)
+    return all_orgs_relation,all_orgs
 
 
-def get_all_project_ids(files):
+def add_new_project(all_projects,project,seen_names):
+    
+    if project["project_name"] in seen_names:
+        pos =seen_names.index(project["project_name"])
+        project["project_id"]=all_projects[pos]["project_id"]
+        return all_projects,project,seen_names
+    else:
+        project["project_id"]=len(all_projects)
+        new_project=project.copy()
+        all_projects.append(new_project)
+        seen_names.append(project["project_name"])
+
+
+def get_all_projects(files):
     all_projects=[]
+    seen_names = []
+    all_projects_relation=[]
     for idx,file in enumerate(files):
         project_ids,project_name = extract_projects(file)
-        projects=[]
+        projects_file=[]
         if len(project_ids)>0:
             for project_id in project_ids:
-                projects.append({"project_id":project_id,"paper_id":idx})
-            all_projects.extend(projects)
-    return all_projects
+                project={"project_name":project_name[0],"project_federal_id":project_id}
+                add_new_project(all_projects,project,seen_names)
+                project["paper_id"]=idx
+                projects_file.append(project)
+            all_projects_relation.extend(projects_file)
+    return all_projects,all_projects_relation
 
 
-def get_all_project_experimental(files):
-    all_projects_complex=[]
-    for idx,file in enumerate(files):
-        projects=[]
-        
-        projects_data = extract_projects_complex(file)
-        if len(projects_data)>0:
-            
-            for project_data in projects_data :
-                try:
-                    projects.append({"project_id":project_data[0],"name":project_data[1],"paper_id":idx})
-                except Exception:
-                    pass
-            all_projects_complex.extend(projects)
-    return all_projects_complex
