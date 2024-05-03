@@ -201,10 +201,10 @@ def extract_projects(file):
 
 def add_new_org(all_orgs,ner,seen_names):
     
-    if ner["name"] in seen_names:
+    if ner["name"].lower() in seen_names:
         pos =seen_names.index(ner["name"].lower())
         ner["org_id"]=all_orgs[pos]["org_id"]
-        return all_orgs,ner,seen_names
+        ner["name"]=all_orgs[pos]["name"]
     else:
         ner["org_id"]=len(all_orgs)
         new_ner=ner.copy()
@@ -228,9 +228,10 @@ def get_all_ners(files,pipe):
 
 def add_new_project(all_projects,project,seen_names):
     
-    if project["project_name"] in seen_names:
+    if project["project_name"].lower() in seen_names:
         pos =seen_names.index(project["project_name"].lower())
         project["project_id"]=all_projects[pos]["project_id"]
+        project["project_name"]=all_projects[pos]["project_name"]
         return all_projects,project,seen_names
     else:
         project["project_id"]=len(all_projects)
