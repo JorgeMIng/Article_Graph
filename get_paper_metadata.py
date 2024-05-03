@@ -3,7 +3,7 @@
 from pdf_analyzer.api.extract.elements import extract_element_soup
 
 def get_paper_metadata(file):
-    title = extract_element_soup(file,"teiHeader.fileDesc.titleStmt.title",None,None)
+    title = extract_element_soup(file,"teiHeader.fileDesc.titleStmt.title",None,None).text
     date=extract_element_soup(file,"teiHeader.fileDesc.publicationStmt.date",None,None)
     
     

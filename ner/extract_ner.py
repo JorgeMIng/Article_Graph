@@ -150,7 +150,7 @@ def extract_ners(file,pipe):
 
 import re
 def extract_award_identifiers(text):
-    # Expresiones regulares para identificadores de premios
+    
     regex_patterns = {
         "NIH": r'(?:#)?\b[1-9][A-Z\d]{3}[A-Z]{2}\d{6}(?:-[AS]?\d+)?\b',
         "DOD": r'(?:#)?\b[A-Z\d]{6}-\d{2}-[123]-\d{4}\b',
@@ -158,29 +158,29 @@ def extract_award_identifiers(text):
         "Education": r'(?:#)?\b[A-Z]+\d+[A-Z]\d{2}[A-Z\d]+\b'
     }
 
-    # Lista para almacenar todos los identificadores únicos encontrados
+    
     all_identifiers = []
 
-    # Aplicar cada expresión regular al texto y almacenar los resultados
+    
     for pattern in regex_patterns.values():
         identifiers = re.findall(pattern, text)
         all_identifiers.extend(identifiers)
 
-    # Eliminar duplicados
+   
     unique_identifiers = list(set(all_identifiers))
 
     return unique_identifiers
 
 def get_projects_names(text):
-    # Obtener identificadores de premios del texto
+   
     identifiers = extract_award_identifiers(text)
     
-    # Lista para almacenar nombres y códigos asociados
+    
     names_and_codes = []
 
-    # Iterar sobre los identificadores y buscar los nombres correspondientes
+    
     for identifier in identifiers:
-        # Buscar el nombre del proyecto antes del identificador
+       
         match = re.search(rf'(\w+)\s+(?:grant|grants|award|awards|code|codes)\s+{re.escape(identifier)}', text, re.IGNORECASE)
         if match:
             names_and_codes.append(match.group(1))
