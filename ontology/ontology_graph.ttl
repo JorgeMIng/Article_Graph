@@ -47,6 +47,11 @@ ns:gender a owl:DatatypeProperty ;
     rdfs:label "gender" ;
     rdfs:domain ns:Person .
 
+ns:keyword a owl:DatatypeProperty ;
+    rdfs:label "keyword" ;
+    rdfs:domain ns:Topic ;
+    rdfs:range xsd:string .
+
 ns:last_name a owl:DatatypeProperty ;
     rdfs:label "last_name" ;
     rdfs:domain ns:Person ;
@@ -61,8 +66,7 @@ ns:name a owl:DatatypeProperty ;
     rdfs:label "name" ;
     rdfs:domain ns:Organization,
         ns:Person,
-        ns:Project,
-        ns:Topic ;
+        ns:Project ;
     rdfs:range xsd:string .
 
 ns:paper1 a owl:ObjectProperty ;
