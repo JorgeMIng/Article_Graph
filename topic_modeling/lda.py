@@ -6,7 +6,6 @@ Classes:
 - LDA: A class to apply LDA to a corpus of documents and extract topics.
 """
 
-from functools import reduce
 from gensim.corpora import Dictionary
 from gensim.models import CoherenceModel
 from sklearn.decomposition import LatentDirichletAllocation
@@ -43,15 +42,12 @@ class LDA:
         Fit the LDA model to the corpus of documents and extract the top words for each topic.
         """
         X = self.vectorizer.fit_transform(self.corpus)
-
         self.vectorizer.get_feature_names_out()
-
         self.model = LatentDirichletAllocation(
             n_components=self.num_topics, random_state=0
         )
 
         self.model.fit(X)
-
         self.topics = self.__get_topics()
 
     def predict(self, doc: str) -> dict[int, float]:
