@@ -29,7 +29,9 @@ class LDA:
         self.corpus: list[str] = corpus
         self.num_topics: int = num_topics
         self.num_words: int = num_words
+        self.coherence: float = float('inf')
         self.topics: list[list[str]] = []
+        self.topic_distributions: list[dict[str, float]] = []
         self.vectorizer: CountVectorizer = CountVectorizer()
         self.model: LatentDirichletAllocation = LatentDirichletAllocation(
             n_components=num_topics, random_state=0
@@ -40,18 +42,15 @@ class LDA:
         Fit the LDA model to the corpus of documents and extract the top words for each topic.
         """
         X = self.vectorizer.fit_transform(self.corpus)
-
         self.vectorizer.get_feature_names_out()
-
         self.model = LatentDirichletAllocation(
             n_components=self.num_topics, random_state=0
         )
 
         self.model.fit(X)
-
         self.topics = self.__get_topics()
 
-    def predict(self, doc: str) -> list[float]:
+    def predict(self, doc: str) -> dict[int, float]:
         """
         Predict the topic distribution for a new document.
 
@@ -61,12 +60,26 @@ class LDA:
         Returns:
         - list[float]: The topic distribution for the new document.
         """
+        dists: dict[int, float] = {}
         X = self.vectorizer.transform([doc])
-        return self.model.transform(X)[0]
+        for i, dist in enumerate(self.model.transform(X)[0]):
+            dists[i] = dist
 
-    def calculate_coherence(self) -> float:
+        return dists
+
+    def predict_all(self) -> None:
+        """
+        Predict the topic distribution for all documents in the corpus.
+
+        The results are available in `LDA.topic_distributions`
+        """
+        self.topic_distributions = [self.predict(doc) for doc in self.corpus]
+
+    def calculate_coherence(self) -> None:
         """
         Calculate the coherence of the topics.
+
+        The result is available in `LDA.coherence`
         """
         coherence_model = CoherenceModel(
             topics=self.topics,
@@ -74,7 +87,7 @@ class LDA:
             dictionary=Dictionary([self.vectorizer.get_feature_names_out()]),
             coherence="c_npmi",
         )
-        return coherence_model.get_coherence()
+        self.coherence = coherence_model.get_coherence()
 
     def __get_topics(self) -> list[list[str]]:
         """
