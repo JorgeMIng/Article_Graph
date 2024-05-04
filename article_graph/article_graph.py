@@ -76,3 +76,20 @@ class ArticleGraph:
         # Add the topic of the Topic node
         self.graph.add(
             (topic_belonging_node, self.ns['topic'], topic_node))
+        
+    def add_similarity(self, text_id1: int, text_id2: int, similarity_score: float):
+        """
+        Add similarity between two texts to the graph.
+        """
+        similarity_node = self.ns[f'similarity#{text_id1}-{text_id2}']
+
+        # Add the type, label, and similarity score of the Similarity node
+        self.graph.add((similarity_node, RDF.type, self.ns.Similarity))
+        self.graph.add((similarity_node, RDFS.label, Literal(f'similarity-{text_id1}-{text_id2}')))
+        self.graph.add((similarity_node, self.ns['degree'], Literal(similarity_score, datatype=XSD.float)))
+
+        # Connect similarity to paper
+        paper_node1 = self.ns[f'paper#{text_id1}']
+        paper_node2 = self.ns[f'paper#{text_id2}']
+        self.graph.add((paper_node1, self.ns['similar_to'], similarity_node))
+        self.graph.add((similarity_node, self.ns['similar_from'], paper_node2))
