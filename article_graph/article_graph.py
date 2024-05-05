@@ -56,7 +56,7 @@ class ArticleGraph:
         """
         Add a topic belonging relationship to the graph.
         """
-        topic_belonging_fragment = f'topic_belonging#{paper_id}{topic_id}'
+        topic_belonging_fragment = f'topic_belonging#{paper_id}-{topic_id}'
         topic_belonging_node = self.ns[topic_belonging_fragment]
         paper_node = self.ns[f'paper#{paper_id}']
         topic_node = self.ns[f'topic#{topic_id}']
