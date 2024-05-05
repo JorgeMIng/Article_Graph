@@ -37,7 +37,5 @@ class Model:
                 result = {'text_id1': i, 'text_id2': j, 'similarity': similarity_scores[i][j]}
                 similarity_results.append(result)
 
-        # Print similarity results
-        print("Similarity results:")
-        for result in similarity_results:
-            print(result)
+        # Return similarity results
+        return similarity_results
