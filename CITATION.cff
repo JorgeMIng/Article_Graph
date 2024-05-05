@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: 'If you use this software, please cite it as below.'
+authors:
+  - family-names: Martín
+    given-names: Jorge
+    orcid: TODO
+  - family-names: Cumia
+    given-names: Gloria
+    orcid: TODO
+  - family-names: Ciccalè
+    given-names: Marco
+    orcid: https://orcid.org/0009-0000-8821-0587
+title: Article_Graph
+license: Apache-2.0
+version: TODO
+doi: TODO
+date-released: TODO
+url: 'https://github.com/JorgeMIng/Article_Graph'
