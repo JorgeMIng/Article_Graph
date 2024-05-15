@@ -3,6 +3,7 @@ Utility functions for the article graph.
 """
 
 from datetime import datetime
+from pdf_analyzer.api.extract.elements import extract_element_soup
 
 
 def xml_date_to_xsd_date(date: str) -> str | None:
@@ -17,3 +18,11 @@ def xml_date_to_xsd_date(date: str) -> str | None:
         except ValueError:
             pass
     return None
+
+def get_abstract(file):
+    
+    soup_abstract = extract_element_soup(file,None,"abstract")
+    soup_text=""
+    for element_text in soup_abstract:
+        soup_text = soup_text + " " + element_text.text
+    return soup_text

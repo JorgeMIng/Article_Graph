@@ -6,7 +6,7 @@ from pdf_analyzer.api.extract.elements import extract_element_soup
 
 def case_final_ner(org_viejo,orgs,type_ent):
     org_viejo["type"]=type_ent
-    if org_viejo["score"] >0.6 and (org_viejo["name"] not in [dict["name"] for dict in orgs]):
+    if org_viejo["score"] >0.8 and (org_viejo["name"] not in [dict["name"] for dict in orgs]):
         orgs.append(org_viejo)
     org_temp=dict()
     org_temp["name"]=""
@@ -25,7 +25,6 @@ def extract_ners(file,pipe):
 
 
     org_parser=False
-    misc_parser=False
     continue_parser=True
 
     org_temp=""
@@ -43,10 +42,7 @@ def extract_ners(file,pipe):
             org_temp=case_final_ner(org_temp,orgs,"ORG")
             org_parser=False
             continue_parser=True
-        if misc_parser and continue_parser and (ner["entity"]=='B-MISC') and ner["start"]!=pos_anterior:
-            org_temp=case_final_ner(org_temp,orgs,"MISC")
-            org_parser=False
-            continue_parser=True 
+        
             
         if org_parser and not continue_parser and (ner["entity"]!='I-ORG'):
             org_temp=case_final_ner(org_temp,orgs,"ORG")
@@ -54,10 +50,7 @@ def extract_ners(file,pipe):
             continue_parser=True   
         
             
-        if misc_parser and not continue_parser and (ner["entity"]!='I-MISC'):
-            org_temp=case_final_ner(org_temp,orgs,"MISC")
-            misc_parser=False
-            continue_parser=True
+   
         
     
         
@@ -76,19 +69,6 @@ def extract_ners(file,pipe):
             continue
         
         
-        if ner["entity"]=='B-MISC' and not misc_parser:
-            misc_parser=True
-            
-            org_temp["name"]=ner["word"]
-            org_temp["score"]=ner["score"]
-            pos_anterior=ner["end"]
-            continue
-        
-        if ner["entity"]=='B-MISC' and misc_parser and continue_parser:
-            
-            org_temp["name"]=org_temp["name"]+ner["word"].replace("#", "")
-            org_temp["score"]=org_temp["score"]*ner["score"]
-            continue
         
         
         if ner["entity"]=='I-ORG' and org_parser:
@@ -104,60 +84,44 @@ def extract_ners(file,pipe):
             continue
         
 
-        if ner["entity"]=='I-MISC' and misc_parser:
-            
-            
-            addit=""
-            if pos_anterior+1 <= ner["start"]:
-                addit=addit +" "
-            continue_parser=False
-            org_temp["name"]=org_temp["name"]+addit+ner["word"].replace("#", "")
-            org_temp["score"]=org_temp["score"]*ner["score"]
-            pos_anterior=ner["end"]
-            continue
+        
         
         
         if org_parser:
             
             org_temp=case_final_ner(org_temp,orgs,"ORG")
-            misc_parser=False
             continue_parser=True
         
     
-        if misc_parser:
-            org_temp=case_final_ner(org_temp,orgs,"MISC")
-            misc_parser=False
-            continue_parser=True
+        
             
         org_parser=False
-        misc_parser=False
+  
         continue_parser=True
 
     if org_parser:
         
         org_temp=case_final_ner(org_temp,orgs,"ORG")
-        misc_parser=False
+   
         continue_parser=True
         
     
-    if misc_parser:
-        org_temp=case_final_ner(org_temp,orgs,"MISC")
-        misc_parser=False
-        continue_parser=True   
+
     return orgs 
 
 
 
 import re
-def extract_award_identifiers(text):
+def extract_award_identifiers(text,regex=None):
     
     regex_patterns = {
         "NIH": r'(?:#)?\b[1-9][A-Z\d]{3}[A-Z]{2}\d{6}(?:-[AS]?\d+)?\b',
         "DOD": r'(?:#)?\b[A-Z\d]{6}-\d{2}-[123]-\d{4}\b',
         "NASA": r'(?:#)?\b(?:80|NN)[A-Z]+\d{2}[A-Z\d]+\b',
-        "Education": r'(?:#)?\b[A-Z]+\d+[A-Z]\d{2}[A-Z\d]+\b'
+        "Education": r'(?:#)?\b[A-Z]+\d+[A-Z]\d{2}[A-Z\d]+\b',
     }
-
+    if regex!=None:
+        regex_patterns=regex
     
     all_identifiers = []
 
@@ -171,9 +135,9 @@ def extract_award_identifiers(text):
 
     return unique_identifiers
 
-def get_projects_names(text):
+def get_projects_names(text,regex=None):
    
-    identifiers = extract_award_identifiers(text)
+    identifiers = extract_award_identifiers(text,regex)
     
     
     names_and_codes = []
@@ -187,7 +151,7 @@ def get_projects_names(text):
 
     return names_and_codes
 
-def extract_projects(file):
+def extract_projects(file,regex=None):
     
     acno = extract_element_soup(file,None,"div","acknowledgement")
     texts =""
@@ -195,7 +159,7 @@ def extract_projects(file):
         for elements in acno:
             texts = texts + " "+ elements.text
        
-    return extract_award_identifiers(texts),get_projects_names(texts)
+    return extract_award_identifiers(texts,regex),get_projects_names(texts,regex)
 
 
 
@@ -240,12 +204,12 @@ def add_new_project(all_projects,project,seen_names):
         seen_names.append(project["project_name"].lower())
 
 
-def get_all_projects(files):
+def get_all_projects(files,regex=None):
     all_projects=[]
     seen_names = []
     all_projects_relation=[]
     for idx,file in enumerate(files):
-        project_ids,project_name = extract_projects(file)
+        project_ids,project_name = extract_projects(file,regex)
         projects_file=[]
         if len(project_ids)>0:
             for project_id in project_ids:

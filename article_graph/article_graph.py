@@ -19,7 +19,7 @@ class ArticleGraph:
         self.graph = Graph()
         self.ns = Namespace('http://open_science.com/')
 
-    def add_paper(self, paper_id: int, title: str, abstract: str, release_date: str | None = None):
+    def add_paper(self, paper_id: int, title: str, abstract: str, release_date):
         """
         Add a paper to the graph.
         """
@@ -32,6 +32,8 @@ class ArticleGraph:
         self.graph.add((paper_node, self.ns['abstract'], Literal(abstract)))
 
         # Add the release_date if provided
+        if release_date is not None and not isinstance(release_date,str):
+            release_date=release_date.text
         if release_date is not None:
             self.graph.add(
                 (paper_node,
@@ -93,3 +95,51 @@ class ArticleGraph:
         paper_node2 = self.ns[f'paper#{text_id2}']
         self.graph.add((paper_node1, self.ns['similar_to'], similarity_node))
         self.graph.add((similarity_node, self.ns['similar_from'], paper_node2))
+        
+        
+    def add_organization(self,org_id,org_name):
+    
+        org_uri = self.ns[f"Organization/{org_id}"]
+        self.graph.add((org_uri, RDF.type, self.ns.Organization))
+        self.graph.add((org_uri, self.ns.name, Literal(org_name)))
+        self.graph.add((org_uri, RDFS.label, Literal(org_name)))
+        
+    
+
+    
+    
+    def add_organization_paper_relation(self,paper_id,organization_id):
+        organization_uri = self.ns[f"Organization/{organization_id}"]
+    
+        # URI del paper
+        paper_uri = self.ns[f"Paper/{paper_id}"]
+        self.graph.add((paper_uri, self.ns.acknowledges, organization_uri))
+    
+    
+    def add_organization_author_relation(self,author_id,organization_id):
+        organization_uri = self.ns[f"Organization/{organization_id}"]
+    
+        author_uri = self.ns[f"Author/{author_id}"]
+        
+        # Agregar tripleta al grafo RDF
+        self.graph.add((author_uri, self.ns.member, organization_uri))
+        
+        
+    def add_project(self,project_id,project_name,project_federal_id):
+
+        project_uri = self.ns[f"Project/{project_id}"]
+
+        # Crear la etiqueta del proyecto
+        label = f"Award {project_name} {project_federal_id}"
+        self.graph.add((project_uri, RDF.type, self.ns.Project))
+        self.graph.add((project_uri, self.ns.name, Literal(project_name, datatype=XSD.string)))
+        self.graph.add((project_uri, RDFS.label, Literal(label, datatype=XSD.string)))
+        self.graph.add((project_uri, self.ns.project_federal_id, Literal(project_federal_id, datatype=XSD.string)))
+        
+        
+    def add_project_relation(self,paper_id,project_id):
+        project_uri = self.ns[f"Project/{project_id}"]
+    
+        # URI del paper
+        paper_uri = self.ns[f"Paper/{paper_id}"]
+        self.graph.add((paper_uri, self.ns.acknowledges, project_uri))  

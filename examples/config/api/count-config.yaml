@@ -1,0 +1,24 @@
+# Word Cloud server-config
+data:
+  data_dir: "data/PDFs"
+  format: ".pdf"
+  recursive: True
+
+grobid:
+  cache: True
+  cache_dir: "data/xmls"
+  operation_key: "processFulltextDocument"
+  format: ".grobid.tei.xml"
+  recursive: True
+
+plot:
+  width: 0.8
+  cache_dir: "data/img/count_img"
+  format: ".png"
+  align: "center"
+  color: "blue"
+  edgecolor: 'black'
+
+#["figures","ref","p"] for more than one stat
+count:
+  stats: "figure" 

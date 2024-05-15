@@ -1,0 +1,5 @@
+# Grobid API server-config
+url:
+  protocol: http
+  api_domain: yordi111nas.synology.me
+  port: 8070

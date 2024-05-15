@@ -17,7 +17,7 @@ def get_paper_metadata(file):
     for element_text in abstract:
                 abstract_text = abstract_text + " " + element_text.text
                 
-    paper_element={"title":title,"abstract":abstract_text,"published_date":date}
+    paper_element={"title":title,"abstract":abstract_text,"release_date":date}
     return paper_element
 
 def get_all_paper_metadata(files):
