@@ -14,15 +14,9 @@ def case_final_ner(org_viejo,orgs,type_ent):
     return org_temp
 
 
-def extract_ners(file,pipe):
+def extract_ners(acno:str,pipe):
     
-    acno = extract_element_soup(file,None,"div","acknowledgement")
-    ners=[]
-    if len(acno)>0:
-        for elements in acno:
-            ners.extend(pipe(elements.text))
-
-
+    ners=pipe(acno)
 
     org_parser=False
     continue_parser=True
@@ -181,7 +175,12 @@ def get_all_ners(files,pipe):
     all_orgs=[]
     seen_names = []
     for idx,file in enumerate(files):
-        ners = extract_ners(file,pipe)
+        acno = extract_element_soup(file,None,"div","acknowledgement")
+        acno_full=""
+        for acno_element in acno:
+            acno_full=acno_full+" "+acno_element.text
+        
+        ners = extract_ners(acno_full,pipe)
         if len(ners)>0:
             for ner in ners:
                 add_new_org(all_orgs,ner,seen_names)

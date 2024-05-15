@@ -2,7 +2,7 @@
 This module contains the class responsible for building an RDF graph.
 """
 
-from rdflib import Graph, Namespace, Literal
+from rdflib import Graph, Namespace, Literal,OWL,URIRef
 from rdflib.namespace import RDF, RDFS, XSD
 from ._utils import xml_date_to_xsd_date
 
@@ -18,6 +18,16 @@ class ArticleGraph:
         """
         self.graph = Graph()
         self.ns = Namespace('http://open_science.com/')
+        
+    def add_entity_data(self,entity_type_name,entity_id,relation,relation_data):
+        entity_uri = self.ns[f"{entity_type_name}/{entity_id}"]
+
+        self.graph.add((entity_uri, self.ns[relation],relation_data)) 
+        
+    def add_wikidata_owl(self,entity_type_name,entity_id,wikidata_id):
+        entity_uri = self.ns[f"{entity_type_name}/{entity_id}"]
+        wikidata_uri = URIRef(f"https://www.wikidata.org/entity/{wikidata_id}")
+        self.graph.add((entity_uri, OWL.sameAs,wikidata_uri)) 
 
     def add_paper(self, paper_id: int, title: str, abstract: str, release_date):
         """
@@ -104,6 +114,8 @@ class ArticleGraph:
         self.graph.add((org_uri, self.ns.name, Literal(org_name)))
         self.graph.add((org_uri, RDFS.label, Literal(org_name)))
         
+ 
+        
     
 
     
@@ -142,4 +154,20 @@ class ArticleGraph:
     
         # URI del paper
         paper_uri = self.ns[f"Paper/{paper_id}"]
-        self.graph.add((paper_uri, self.ns.acknowledges, project_uri))  
+        self.graph.add((paper_uri, self.ns.acknowledges, project_uri)) 
+        
+        
+    def add_author(self,author_id,label,first_name=None,last_name=None,email=None):
+        author_uri = self.ns[f"Author/{author_id}"]
+        self.graph.add((author_uri, RDF.type, self.ns.Author))
+        self.graph.add((author_uri, self.ns.label, Literal(label, datatype=XSD.string)))
+        
+        if first_name:
+            self.graph.add((author_uri, self.ns.first_name, Literal(first_name, datatype=XSD.string)))
+        if last_name:
+            self.graph.add((author_uri, self.ns.last_name, Literal(last_name, datatype=XSD.string)))
+        if email:
+            email_uri = URIRef(email)
+            self.graph.add((author_uri, self.ns.email, email_uri))
+        
+    

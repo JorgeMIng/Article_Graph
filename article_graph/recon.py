@@ -1,6 +1,6 @@
 import pandas as pd
 from reconciler import reconcile
-from SPARQLWrapper import SPARQLWrapper, JSON
+#from SPARQLWrapper import SPARQLWrapper, JSON
 
 PERSON_WIKIDATA_ID = "Q5"
 
@@ -45,5 +45,12 @@ def get_extended_author_info(names: list[str]):
     # 3 Devolver los datos
     return reconciled_data
 
-print(get_extended_author_info(["Jacob Devlin", "Barack Obama", "Marie Curie"]))
+#print(get_extended_author_info(["Jacob Devlin", "Barack Obama", "Marie Curie"]))
 
+
+def recon_generic(names: list[str],reconcile_id):
+    df = pd.DataFrame({ "Names": names })
+
+    results = reconcile(df["Names"], type_id=reconcile_id)
+    
+    return [{"name":result['name'],"match": result['match'],"score": result['score'],"id": result['id']} for index, result in results.iterrows()]
