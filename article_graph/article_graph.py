@@ -2,7 +2,7 @@
 This module contains the class responsible for building an RDF graph.
 """
 
-from rdflib import Graph, Namespace, Literal,OWL,URIRef
+from rdflib import Graph, Namespace, Literal, OWL, URIRef
 from rdflib.namespace import RDF, RDFS, XSD
 from ._utils import xml_date_to_xsd_date
 
@@ -18,16 +18,16 @@ class ArticleGraph:
         """
         self.graph = Graph()
         self.ns = Namespace('http://open_science.com/')
-        
-    def add_entity_data(self,entity_type_name,entity_id,relation,relation_data):
-        entity_uri = self.ns[f"{entity_type_name}/{entity_id}"]
 
-        self.graph.add((entity_uri, self.ns[relation],relation_data)) 
-        
-    def add_wikidata_owl(self,entity_type_name,entity_id,wikidata_id):
-        entity_uri = self.ns[f"{entity_type_name}/{entity_id}"]
+    def add_entity_data(self, entity_type_name, entity_id, relation, relation_data):
+        entity_uri = self.ns[f"{entity_type_name}#{entity_id}"]
+
+        self.graph.add((entity_uri, self.ns[relation], relation_data))
+
+    def add_wikidata_owl(self, entity_type_name, entity_id, wikidata_id):
+        entity_uri = self.ns[f"{entity_type_name}#{entity_id}"]
         wikidata_uri = URIRef(f"https://www.wikidata.org/entity/{wikidata_id}")
-        self.graph.add((entity_uri, OWL.sameAs,wikidata_uri)) 
+        self.graph.add((entity_uri, OWL.sameAs, wikidata_uri))
 
     def add_paper(self, paper_id: int, title: str, abstract: str, release_date):
         """
@@ -42,8 +42,8 @@ class ArticleGraph:
         self.graph.add((paper_node, self.ns['abstract'], Literal(abstract)))
 
         # Add the release_date if provided
-        if release_date is not None and not isinstance(release_date,str):
-            release_date=release_date.text
+        if release_date is not None and not isinstance(release_date, str):
+            release_date = release_date.text
         if release_date is not None:
             self.graph.add(
                 (paper_node,
@@ -88,7 +88,7 @@ class ArticleGraph:
         # Add the topic of the Topic node
         self.graph.add(
             (topic_belonging_node, self.ns['topic'], topic_node))
-        
+
     def add_similarity(self, text_id1: int, text_id2: int, similarity_score: float):
         """
         Add similarity between two texts to the graph.
@@ -97,77 +97,82 @@ class ArticleGraph:
 
         # Add the type, label, and similarity score of the Similarity node
         self.graph.add((similarity_node, RDF.type, self.ns.Similarity))
-        self.graph.add((similarity_node, RDFS.label, Literal(f'similarity-{text_id1}-{text_id2}')))
-        self.graph.add((similarity_node, self.ns['degree'], Literal(similarity_score, datatype=XSD.float)))
+        self.graph.add((similarity_node, RDFS.label, Literal(
+            f'similarity-{text_id1}-{text_id2}')))
+        self.graph.add((similarity_node, self.ns['degree'], Literal(
+            similarity_score, datatype=XSD.float)))
 
         # Connect similarity to paper
         paper_node1 = self.ns[f'paper#{text_id1}']
         paper_node2 = self.ns[f'paper#{text_id2}']
         self.graph.add((paper_node1, self.ns['similar_to'], similarity_node))
         self.graph.add((similarity_node, self.ns['similar_from'], paper_node2))
-        
-        
-    def add_organization(self,org_id,org_name):
-    
-        org_uri = self.ns[f"Organization/{org_id}"]
-        self.graph.add((org_uri, RDF.type, self.ns.Organization))
-        self.graph.add((org_uri, self.ns.name, Literal(org_name)))
-        self.graph.add((org_uri, RDFS.label, Literal(org_name)))
-        
- 
-        
-    
 
-    
-    
-    def add_organization_paper_relation(self,paper_id,organization_id):
-        organization_uri = self.ns[f"Organization/{organization_id}"]
-    
+    def add_organization(self, org_id, org_name, icon_uri=None, location=None, wikidata_id=None):
+        org_uri = self.ns[f"organization#{org_id}"]
+        self.graph.add((org_uri, RDF.type, self.ns.Organization))
+        self.graph.add((org_uri, RDFS.label, Literal(org_name)))
+        self.graph.add((org_uri, self.ns.name, Literal(org_name)))
+
+        if location:
+            self.graph.add((org_uri, self.ns.location, location))
+
+        if icon_uri:
+            self.graph.add((org_uri, self.ns.icon, Literal(
+                icon_uri, datatype=XSD.anyURI)))
+
+        if wikidata_id:
+            self.add_wikidata_owl(
+                'organization', entity_id=org_id, wikidata_id=wikidata_id)
+
+    def add_organization_paper_relation(self, paper_id, organization_id):
+        organization_uri = self.ns[f"organization#{organization_id}"]
+
         # URI del paper
-        paper_uri = self.ns[f"Paper/{paper_id}"]
+        paper_uri = self.ns[f"paper#{paper_id}"]
         self.graph.add((paper_uri, self.ns.acknowledges, organization_uri))
-    
-    
-    def add_organization_author_relation(self,author_id,organization_id):
-        organization_uri = self.ns[f"Organization/{organization_id}"]
-    
-        author_uri = self.ns[f"Author/{author_id}"]
-        
+
+    def add_organization_author_relation(self, author_id, organization_id):
+        organization_uri = self.ns[f"organization#{organization_id}"]
+
+        author_uri = self.ns[f"person#{author_id}"]
+
         # Agregar tripleta al grafo RDF
         self.graph.add((author_uri, self.ns.member, organization_uri))
-        
-        
-    def add_project(self,project_id,project_name,project_federal_id):
 
-        project_uri = self.ns[f"Project/{project_id}"]
+    def add_project(self, project_id, project_name, project_federal_id):
+
+        project_uri = self.ns[f"project#{project_id}"]
 
         # Crear la etiqueta del proyecto
         label = f"Award {project_name} {project_federal_id}"
         self.graph.add((project_uri, RDF.type, self.ns.Project))
-        self.graph.add((project_uri, self.ns.name, Literal(project_name, datatype=XSD.string)))
-        self.graph.add((project_uri, RDFS.label, Literal(label, datatype=XSD.string)))
-        self.graph.add((project_uri, self.ns.project_federal_id, Literal(project_federal_id, datatype=XSD.string)))
-        
-        
-    def add_project_relation(self,paper_id,project_id):
-        project_uri = self.ns[f"Project/{project_id}"]
-    
+        self.graph.add((project_uri, self.ns.name, Literal(
+            project_name, datatype=XSD.string)))
+        self.graph.add(
+            (project_uri, RDFS.label, Literal(label, datatype=XSD.string)))
+        self.graph.add((project_uri, self.ns.project_federal_id,
+                       Literal(project_federal_id, datatype=XSD.string)))
+
+    def add_project_relation(self, paper_id, project_id):
+        project_uri = self.ns[f"project#{project_id}"]
+
         # URI del paper
-        paper_uri = self.ns[f"Paper/{paper_id}"]
-        self.graph.add((paper_uri, self.ns.acknowledges, project_uri)) 
-        
-        
-    def add_author(self,author_id,label,first_name=None,last_name=None,email=None):
-        author_uri = self.ns[f"Author/{author_id}"]
+        paper_uri = self.ns[f"paper#{paper_id}"]
+        self.graph.add((paper_uri, self.ns.acknowledges, project_uri))
+
+    def add_author(self, author_id, label, first_name=None, last_name=None, email=None):
+        author_uri = self.ns[f"person#{author_id}"]
         self.graph.add((author_uri, RDF.type, self.ns.Author))
-        self.graph.add((author_uri, self.ns.label, Literal(label, datatype=XSD.string)))
-        
+        self.graph.add((author_uri, self.ns.label,
+                       Literal(label, datatype=XSD.string)))
+
         if first_name:
-            self.graph.add((author_uri, self.ns.first_name, Literal(first_name, datatype=XSD.string)))
+            self.graph.add((author_uri, self.ns.first_name,
+                           Literal(first_name, datatype=XSD.string)))
         if last_name:
-            self.graph.add((author_uri, self.ns.last_name, Literal(last_name, datatype=XSD.string)))
+            self.graph.add((author_uri, self.ns.last_name,
+                           Literal(last_name, datatype=XSD.string)))
         if email:
             email_uri = URIRef(email)
             self.graph.add((author_uri, self.ns.email, email_uri))
-        
-    

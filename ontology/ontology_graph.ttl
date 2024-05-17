@@ -1,5 +1,5 @@
 @prefix mod: <https://w3id.org/mod#> .
-@prefix ns: <http://open_science.com#> .
+@prefix ns: <http://open_science.com/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -17,11 +17,6 @@ ns:acknowledges a owl:ObjectProperty ;
     rdfs:domain ns:Paper ;
     rdfs:range ns:Organization,
         ns:Project .
-
-ns:age a owl:DatatypeProperty ;
-    rdfs:label "age" ;
-    rdfs:domain ns:Person ;
-    rdfs:range xsd:string .
 
 ns:author a owl:ObjectProperty ;
     rdfs:label "author" ;
@@ -43,9 +38,10 @@ ns:email a owl:DatatypeProperty ;
     rdfs:label "email" ;
     rdfs:domain ns:Person .
 
-ns:gender a owl:DatatypeProperty ;
-    rdfs:label "gender" ;
-    rdfs:domain ns:Person .
+ns:icon a owl:DatatypeProperty ;
+    rdfs:label "icon" ;
+    rdfs:domain ns:Organization ;
+    rdfs:range xsd:anyURI .
 
 ns:keyword a owl:DatatypeProperty ;
     rdfs:label "keyword" ;
@@ -69,20 +65,20 @@ ns:name a owl:DatatypeProperty ;
         ns:Project ;
     rdfs:range xsd:string .
 
-ns:paper1 a owl:ObjectProperty ;
-    rdfs:label "paper1" ;
-    rdfs:domain ns:Similarity ;
-    rdfs:range ns:Paper .
-
-ns:paper2 a owl:ObjectProperty ;
-    rdfs:label "paper2" ;
-    rdfs:domain ns:Similarity ;
-    rdfs:range ns:Paper .
-
 ns:release_date a owl:DatatypeProperty ;
     rdfs:label "release_date" ;
     rdfs:domain ns:Paper ;
     rdfs:range xsd:date .
+
+ns:similar_from a owl:ObjectProperty ;
+    rdfs:label "similar_from" ;
+    rdfs:domain ns:Similarity ;
+    rdfs:range ns:Paper .
+
+ns:similar_to a owl:ObjectProperty ;
+    rdfs:label "similar_to" ;
+    rdfs:domain ns:Similarity ;
+    rdfs:range ns:Paper .
 
 ns:title a owl:DatatypeProperty ;
     rdfs:label "title" ;
@@ -105,20 +101,25 @@ rdfs:label a owl:DatatypeProperty ;
         ns:TopicBelonging ;
     rdfs:range xsd:string .
 
+owl:sameAs a owl:DatatypeProperty ;
+    rdfs:label "same as" ;
+    rdfs:domain ns:Organization ;
+    rdfs:range xsd:anyURI .
+
 ns:Project a owl:Class ;
     rdfs:label "Project" .
 
 ns:Topic a owl:Class ;
     rdfs:label "Topic" .
 
-ns:Organization a owl:Class ;
-    rdfs:label "Organization" .
-
 ns:Similarity a owl:Class ;
     rdfs:label "Similarity" .
 
 ns:TopicBelonging a owl:Class ;
     rdfs:label "Topic Belonging" .
+
+ns:Organization a owl:Class ;
+    rdfs:label "Organization" .
 
 ns:Person a owl:Class ;
     rdfs:label "Person" .
