@@ -53,6 +53,16 @@ ns:last_name a owl:DatatypeProperty ;
     rdfs:domain ns:Person ;
     rdfs:range xsd:string .
 
+ns:latitude a owl:DatatypeProperty ;
+    rdfs:label "latitude" ;
+    rdfs:domain ns:Organization ;
+    rdfs:range xsd:float .
+
+ns:longitude a owl:DatatypeProperty ;
+    rdfs:label "longitude" ;
+    rdfs:domain ns:Organization ;
+    rdfs:range xsd:float .
+
 ns:member a owl:ObjectProperty ;
     rdfs:label "member" ;
     rdfs:domain ns:Person ;
@@ -63,6 +73,11 @@ ns:name a owl:DatatypeProperty ;
     rdfs:domain ns:Organization,
         ns:Person,
         ns:Project ;
+    rdfs:range xsd:string .
+
+ns:project_federal_id a owl:DatatypeProperty ;
+    rdfs:label "project_federal_id" ;
+    rdfs:domain ns:Project ;
     rdfs:range xsd:string .
 
 ns:release_date a owl:DatatypeProperty ;
@@ -77,8 +92,8 @@ ns:similar_from a owl:ObjectProperty ;
 
 ns:similar_to a owl:ObjectProperty ;
     rdfs:label "similar_to" ;
-    rdfs:domain ns:Similarity ;
-    rdfs:range ns:Paper .
+    rdfs:domain ns:Paper ;
+    rdfs:range ns:Similarity .
 
 ns:title a owl:DatatypeProperty ;
     rdfs:label "title" ;
@@ -103,14 +118,15 @@ rdfs:label a owl:DatatypeProperty ;
 
 owl:sameAs a owl:DatatypeProperty ;
     rdfs:label "same as" ;
-    rdfs:domain ns:Organization ;
+    rdfs:domain ns:Organization,
+        ns:Person ;
     rdfs:range xsd:anyURI .
-
-ns:Project a owl:Class ;
-    rdfs:label "Project" .
 
 ns:Topic a owl:Class ;
     rdfs:label "Topic" .
+
+ns:Project a owl:Class ;
+    rdfs:label "Project" .
 
 ns:Similarity a owl:Class ;
     rdfs:label "Similarity" .
@@ -118,11 +134,11 @@ ns:Similarity a owl:Class ;
 ns:TopicBelonging a owl:Class ;
     rdfs:label "Topic Belonging" .
 
-ns:Organization a owl:Class ;
-    rdfs:label "Organization" .
-
 ns:Person a owl:Class ;
     rdfs:label "Person" .
+
+ns:Organization a owl:Class ;
+    rdfs:label "Organization" .
 
 ns:Paper a owl:Class ;
     rdfs:label "Paper" .

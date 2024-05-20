@@ -20,11 +20,17 @@ class ArticleGraph:
         self.ns = Namespace('http://open_science.com/')
 
     def add_entity_data(self, entity_type_name, entity_id, relation, relation_data):
+        """
+        Auxiliar function to add data to an entity.
+        """
         entity_uri = self.ns[f"{entity_type_name}#{entity_id}"]
 
         self.graph.add((entity_uri, self.ns[relation], relation_data))
 
     def add_wikidata_owl(self, entity_type_name, entity_id, wikidata_id):
+        """
+        Auxiliar function to add the sameAs property to an entity.
+        """
         entity_uri = self.ns[f"{entity_type_name}#{entity_id}"]
         wikidata_uri = URIRef(f"https://www.wikidata.org/entity/{wikidata_id}")
         self.graph.add((entity_uri, OWL.sameAs, wikidata_uri))
@@ -108,18 +114,21 @@ class ArticleGraph:
         self.graph.add((paper_node1, self.ns['similar_to'], similarity_node))
         self.graph.add((similarity_node, self.ns['similar_from'], paper_node2))
 
-    def add_organization(self, org_id, org_name, icon_uri=None, location=None, wikidata_id=None):
+    def add_organization(self, org_id, org_name, icon=None, coordinates=None, wikidata_id=None):
         org_uri = self.ns[f"organization#{org_id}"]
         self.graph.add((org_uri, RDF.type, self.ns.Organization))
         self.graph.add((org_uri, RDFS.label, Literal(org_name)))
         self.graph.add((org_uri, self.ns.name, Literal(org_name)))
 
-        if location:
-            self.graph.add((org_uri, self.ns.location, location))
-
-        if icon_uri:
+        if icon:
             self.graph.add((org_uri, self.ns.icon, Literal(
-                icon_uri, datatype=XSD.anyURI)))
+                icon, datatype=XSD.anyURI)))
+
+        if coordinates:
+            self.graph.add((org_uri, self.ns.longitude, Literal(
+                coordinates['lon'], datatype=XSD.float)))
+            self.graph.add((org_uri, self.ns.latitude, Literal(
+                coordinates['lat'], datatype=XSD.float)))
 
         if wikidata_id:
             self.add_wikidata_owl(
@@ -161,9 +170,15 @@ class ArticleGraph:
         paper_uri = self.ns[f"paper#{paper_id}"]
         self.graph.add((paper_uri, self.ns.acknowledges, project_uri))
 
-    def add_author(self, author_id, label, first_name=None, last_name=None, email=None):
+    def add_author(self,
+                   author_id,
+                   label,
+                   first_name=None,
+                   last_name=None,
+                   email=None,
+                   wikidata_id=None):
         author_uri = self.ns[f"person#{author_id}"]
-        self.graph.add((author_uri, RDF.type, self.ns.Author))
+        self.graph.add((author_uri, RDF.type, self.ns.Person))
         self.graph.add((author_uri, self.ns.label,
                        Literal(label, datatype=XSD.string)))
 
@@ -176,3 +191,7 @@ class ArticleGraph:
         if email:
             email_uri = URIRef(email)
             self.graph.add((author_uri, self.ns.email, email_uri))
+
+        if wikidata_id:
+            self.add_wikidata_owl(
+                'person', entity_id=author_id, wikidata_id=wikidata_id)

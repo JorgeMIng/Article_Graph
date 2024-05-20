@@ -1,0 +1,1252 @@
+@prefix ns1: <http://open_science.com/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://open_science.com/paper#0> a ns1:Paper ;
+    rdfs:label "paper-0" ;
+    ns1:abstract """ 
+Language model pretraining has led to significant performance gains but careful comparison between different approaches is challenging. Training is computationally expensive, often done on private datasets of different sizes, and, as we will show, hyperparameter choices have significant impact on the final results. We present a replication study of BERT pretraining (Devlin et al., 2019) that carefully measures the impact of many key hyperparameters and training data size. We find that BERT was significantly undertrained, and can match or exceed the performance of every model published after it. Our best model achieves state-of-the-art results on GLUE, RACE and SQuAD. These results highlight the importance of previously overlooked design choices, and raise questions about the source of recently reported improvements. We release our models and code. 1   
+""" ;
+    ns1:belongs_to_topic <http://open_science.com/topic_belonging#0-0>,
+        <http://open_science.com/topic_belonging#0-1>,
+        <http://open_science.com/topic_belonging#0-2> ;
+    ns1:release_date "2019-07-26"^^xsd:date ;
+    ns1:similar_to <http://open_science.com/similarity#0-1>,
+        <http://open_science.com/similarity#0-2>,
+        <http://open_science.com/similarity#0-3>,
+        <http://open_science.com/similarity#0-4>,
+        <http://open_science.com/similarity#0-5>,
+        <http://open_science.com/similarity#0-6>,
+        <http://open_science.com/similarity#0-7>,
+        <http://open_science.com/similarity#0-8>,
+        <http://open_science.com/similarity#0-9> ;
+    ns1:title "A Robustly Optimized BERT Pre-training Approach with Post-training" .
+
+<http://open_science.com/person#0> a ns1:Person ;
+    ns1:first_name "Zhuang  "^^xsd:string ;
+    ns1:label "Zhuang   Liu "^^xsd:string ;
+    ns1:last_name "Liu "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q7271> .
+
+<http://open_science.com/person#1> a ns1:Person ;
+    ns1:first_name "Wayne  "^^xsd:string ;
+    ns1:label "Wayne   Lin "^^xsd:string ;
+    ns1:last_name "Lin "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q716022> .
+
+<http://open_science.com/person#10> a ns1:Person ;
+    ns1:first_name "Arvind  "^^xsd:string ;
+    ns1:label "Arvind   Neelakantan "^^xsd:string ;
+    ns1:last_name "Neelakantan "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q55444792> .
+
+<http://open_science.com/person#11> a ns1:Person ;
+    ns1:first_name "Pranav  "^^xsd:string ;
+    ns1:label "Pranav   Shyam "^^xsd:string ;
+    ns1:last_name "Shyam "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q115662093> .
+
+<http://open_science.com/person#12> a ns1:Person ;
+    ns1:first_name "Girish  "^^xsd:string ;
+    ns1:label "Girish   Sastry "^^xsd:string ;
+    ns1:last_name "Sastry "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q115661401> .
+
+<http://open_science.com/person#13> a ns1:Person ;
+    ns1:first_name "Amanda  "^^xsd:string ;
+    ns1:label "Amanda   Askell "^^xsd:string ;
+    ns1:last_name "Askell "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q115661373> .
+
+<http://open_science.com/person#14> a ns1:Person ;
+    ns1:first_name "Sandhini  "^^xsd:string ;
+    ns1:label "Sandhini   Agarwal "^^xsd:string ;
+    ns1:last_name "Agarwal "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q115661899> .
+
+<http://open_science.com/person#15> a ns1:Person ;
+    ns1:first_name "Ariel  "^^xsd:string ;
+    ns1:label "Ariel   Herbert-Voss "^^xsd:string ;
+    ns1:last_name "Herbert-Voss "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q123135028> .
+
+<http://open_science.com/person#16> a ns1:Person ;
+    ns1:first_name "Gretchen  "^^xsd:string ;
+    ns1:label "Gretchen   Krueger "^^xsd:string ;
+    ns1:last_name "Krueger "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q123135075> .
+
+<http://open_science.com/person#17> a ns1:Person ;
+    ns1:first_name "Tom  "^^xsd:string ;
+    ns1:label "Tom   Henighan "^^xsd:string ;
+    ns1:last_name "Henighan "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q113296872> .
+
+<http://open_science.com/person#18> a ns1:Person ;
+    ns1:first_name "Rewon  "^^xsd:string ;
+    ns1:label "Rewon   Child "^^xsd:string ;
+    ns1:last_name "Child "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q112065907> .
+
+<http://open_science.com/person#19> a ns1:Person ;
+    ns1:first_name "Aditya  "^^xsd:string ;
+    ns1:label "Aditya   Ramesh "^^xsd:string ;
+    ns1:last_name "Ramesh "^^xsd:string .
+
+<http://open_science.com/person#2> a ns1:Person ;
+    ns1:first_name "Ya  "^^xsd:string ;
+    ns1:label "Ya   Shi "^^xsd:string ;
+    ns1:last_name "Shi "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q45420261> .
+
+<http://open_science.com/person#20> a ns1:Person ;
+    ns1:first_name "Daniel  M "^^xsd:string ;
+    ns1:label "Daniel  M  Ziegler "^^xsd:string ;
+    ns1:last_name "Ziegler "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q115923540> .
+
+<http://open_science.com/person#21> a ns1:Person ;
+    ns1:first_name "Jeffrey  "^^xsd:string ;
+    ns1:label "Jeffrey   Wu "^^xsd:string ;
+    ns1:last_name "Wu "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q115591534> .
+
+<http://open_science.com/person#22> a ns1:Person ;
+    ns1:first_name "Christopher  "^^xsd:string ;
+    ns1:label "Christopher   Hesse "^^xsd:string ;
+    ns1:last_name "Hesse "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q2314771> .
+
+<http://open_science.com/person#23> a ns1:Person ;
+    ns1:first_name "Mark  "^^xsd:string ;
+    ns1:label "Mark   Chen "^^xsd:string ;
+    ns1:last_name "Chen "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q707648> .
+
+<http://open_science.com/person#24> a ns1:Person ;
+    ns1:first_name "Eric  "^^xsd:string ;
+    ns1:label "Eric   Sigler "^^xsd:string ;
+    ns1:last_name "Sigler "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q91113652> .
+
+<http://open_science.com/person#25> a ns1:Person ;
+    ns1:first_name "Mateusz  "^^xsd:string ;
+    ns1:label "Mateusz   Litwin "^^xsd:string ;
+    ns1:last_name "Litwin "^^xsd:string .
+
+<http://open_science.com/person#26> a ns1:Person ;
+    ns1:first_name "Scott  "^^xsd:string ;
+    ns1:label "Scott   Gray "^^xsd:string ;
+    ns1:last_name "Gray "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q3476223> .
+
+<http://open_science.com/person#27> a ns1:Person ;
+    ns1:first_name "Benjamin  "^^xsd:string ;
+    ns1:label "Benjamin   Chess "^^xsd:string ;
+    ns1:last_name "Chess "^^xsd:string .
+
+<http://open_science.com/person#28> a ns1:Person ;
+    ns1:first_name "Jack  "^^xsd:string ;
+    ns1:label "Jack   Clark "^^xsd:string ;
+    ns1:last_name "Clark "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q1360743> .
+
+<http://open_science.com/person#29> a ns1:Person ;
+    ns1:first_name "Christopher  "^^xsd:string ;
+    ns1:label "Christopher   Berner "^^xsd:string ;
+    ns1:last_name "Berner "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q115661444> .
+
+<http://open_science.com/person#3> a ns1:Person ;
+    ns1:first_name "Jun  "^^xsd:string ;
+    ns1:label "Jun   Zhao "^^xsd:string ;
+    ns1:last_name "Zhao "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q3357852> .
+
+<http://open_science.com/person#30> a ns1:Person ;
+    ns1:first_name "Sam  "^^xsd:string ;
+    ns1:label "Sam   Mccandlish "^^xsd:string ;
+    ns1:last_name "Mccandlish "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q105285886> .
+
+<http://open_science.com/person#31> a ns1:Person ;
+    ns1:first_name "Alec  "^^xsd:string ;
+    ns1:label "Alec   Radford "^^xsd:string ;
+    ns1:last_name "Radford "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q29180956> .
+
+<http://open_science.com/person#32> a ns1:Person ;
+    ns1:first_name "Ilya  "^^xsd:string ;
+    ns1:label "Ilya   Sutskever "^^xsd:string ;
+    ns1:last_name "Sutskever "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q21712134> .
+
+<http://open_science.com/person#33> a ns1:Person ;
+    ns1:first_name "Dario  Amodei "^^xsd:string ;
+    ns1:label "Dario  Amodei  Openai "^^xsd:string ;
+    ns1:last_name "Openai "^^xsd:string .
+
+<http://open_science.com/person#34> a ns1:Person ;
+    ns1:email <edwardhu@microsoft.com> ;
+    ns1:first_name "Edward  "^^xsd:string ;
+    ns1:label "Edward   Hu "^^xsd:string ;
+    ns1:last_name "Hu "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#9> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q122983353> .
+
+<http://open_science.com/person#35> a ns1:Person ;
+    ns1:first_name "Yelong  "^^xsd:string ;
+    ns1:label "Yelong   Shen "^^xsd:string ;
+    ns1:last_name "Shen "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#9> .
+
+<http://open_science.com/person#36> a ns1:Person ;
+    ns1:email <phwallis@microsoft.com> ;
+    ns1:first_name "Phillip  "^^xsd:string ;
+    ns1:label "Phillip   Wallis "^^xsd:string ;
+    ns1:last_name "Wallis "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#9> .
+
+<http://open_science.com/person#37> a ns1:Person ;
+    ns1:email <zeyuana@microsoft.com> ;
+    ns1:first_name "Zeyuan  "^^xsd:string ;
+    ns1:label "Zeyuan   Allen-Zhu "^^xsd:string ;
+    ns1:last_name "Allen-Zhu "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#9> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q59483711> .
+
+<http://open_science.com/person#38> a ns1:Person ;
+    ns1:email <yuanzhil@microsoft.com> ;
+    ns1:first_name "Yuanzhi  "^^xsd:string ;
+    ns1:label "Yuanzhi   Li "^^xsd:string ;
+    ns1:last_name "Li "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#9> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q11095430> .
+
+<http://open_science.com/person#39> a ns1:Person ;
+    ns1:email <swang@microsoft.com> ;
+    ns1:first_name "Shean  "^^xsd:string ;
+    ns1:label "Shean   Wang "^^xsd:string ;
+    ns1:last_name "Wang "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#9> .
+
+<http://open_science.com/person#4> a ns1:Person ;
+    ns1:first_name "Tom  B "^^xsd:string ;
+    ns1:label "Tom  B  Brown "^^xsd:string ;
+    ns1:last_name "Brown "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q115662131> .
+
+<http://open_science.com/person#40> a ns1:Person ;
+    ns1:first_name "Lu  "^^xsd:string ;
+    ns1:label "Lu   Wang "^^xsd:string ;
+    ns1:last_name "Wang "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#9> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q3179177> .
+
+<http://open_science.com/person#41> a ns1:Person ;
+    ns1:email <wzchen@microsoft.com> ;
+    ns1:first_name "Weizhu  "^^xsd:string ;
+    ns1:label "Weizhu   Chen "^^xsd:string ;
+    ns1:last_name "Chen "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#9> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q95306494> .
+
+<http://open_science.com/person#42> a ns1:Person ;
+    ns1:email <marcotcr@cs.uw.edu> ;
+    ns1:first_name "Marco  Tulio "^^xsd:string ;
+    ns1:label "Marco  Tulio  Ribeiro "^^xsd:string ;
+    ns1:last_name "Ribeiro "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#10> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q113667753> .
+
+<http://open_science.com/person#43> a ns1:Person ;
+    ns1:email <sameer@cs.uw.edu> ;
+    ns1:first_name "Sameer  "^^xsd:string ;
+    ns1:label "Sameer   Singh "^^xsd:string ;
+    ns1:last_name "Singh "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#10> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q64219116> .
+
+<http://open_science.com/person#44> a ns1:Person ;
+    ns1:email <guestrin@cs.uw.edu> ;
+    ns1:first_name "Carlos  "^^xsd:string ;
+    ns1:label "Carlos   Guestrin "^^xsd:string ;
+    ns1:last_name "Guestrin "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#10> .
+
+<http://open_science.com/person#45> a ns1:Person ;
+    ns1:first_name "Yixin  "^^xsd:string ;
+    ns1:label "Yixin   Liu "^^xsd:string ;
+    ns1:last_name "Liu "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#11> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q59706591> .
+
+<http://open_science.com/person#46> a ns1:Person ;
+    ns1:first_name "Kai  "^^xsd:string ;
+    ns1:label "Kai   Zhang "^^xsd:string ;
+    ns1:last_name "Zhang "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#11> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q8070251> .
+
+<http://open_science.com/person#47> a ns1:Person ;
+    ns1:first_name "Yuan  "^^xsd:string ;
+    ns1:label "Yuan   Li "^^xsd:string ;
+    ns1:last_name "Li "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q4023161> .
+
+<http://open_science.com/person#48> a ns1:Person ;
+    ns1:first_name "Zhiling  "^^xsd:string ;
+    ns1:label "Zhiling   Yan "^^xsd:string ;
+    ns1:last_name "Yan "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#11> .
+
+<http://open_science.com/person#49> a ns1:Person ;
+    ns1:first_name "Chujie  "^^xsd:string ;
+    ns1:label "Chujie   Gao "^^xsd:string ;
+    ns1:last_name "Gao "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#11> .
+
+<http://open_science.com/person#5> a ns1:Person ;
+    ns1:first_name "Benjamin  "^^xsd:string ;
+    ns1:label "Benjamin   Mann "^^xsd:string ;
+    ns1:last_name "Mann "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q91736166> .
+
+<http://open_science.com/person#50> a ns1:Person ;
+    ns1:first_name "Ruoxi  "^^xsd:string ;
+    ns1:label "Ruoxi   Chen "^^xsd:string ;
+    ns1:last_name "Chen "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#11> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q711466> .
+
+<http://open_science.com/person#51> a ns1:Person ;
+    ns1:first_name "Zhengqing  "^^xsd:string ;
+    ns1:label "Zhengqing   Yuan "^^xsd:string ;
+    ns1:last_name "Yuan "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#11> .
+
+<http://open_science.com/person#52> a ns1:Person ;
+    ns1:first_name "Yue  "^^xsd:string ;
+    ns1:label "Yue   Huang "^^xsd:string ;
+    ns1:last_name "Huang "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#11> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q11176284> .
+
+<http://open_science.com/person#53> a ns1:Person ;
+    ns1:first_name "Hanchi  "^^xsd:string ;
+    ns1:label "Hanchi   Sun "^^xsd:string ;
+    ns1:last_name "Sun "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#11> .
+
+<http://open_science.com/person#54> a ns1:Person ;
+    ns1:first_name "Jianfeng  "^^xsd:string ;
+    ns1:label "Jianfeng   Gao "^^xsd:string ;
+    ns1:last_name "Gao "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#11>,
+        <http://open_science.com/organization#12> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q114415897> .
+
+<http://open_science.com/person#55> a ns1:Person ;
+    ns1:first_name "Lifang  "^^xsd:string ;
+    ns1:label "Lifang   He "^^xsd:string ;
+    ns1:last_name "He "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#11> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q86785768> .
+
+<http://open_science.com/person#56> a ns1:Person ;
+    ns1:first_name "Lichao  "^^xsd:string ;
+    ns1:label "Lichao   Sun "^^xsd:string ;
+    ns1:last_name "Sun "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#11> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q93079007> .
+
+<http://open_science.com/person#57> a ns1:Person ;
+    ns1:email <avaswani@google.com> ;
+    ns1:first_name "Ashish  "^^xsd:string ;
+    ns1:label "Ashish   Vaswani "^^xsd:string ;
+    ns1:last_name "Vaswani "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q44749723> .
+
+<http://open_science.com/person#58> a ns1:Person ;
+    ns1:first_name "Noam  "^^xsd:string ;
+    ns1:label "Noam   Shazeer "^^xsd:string ;
+    ns1:last_name "Shazeer "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q30251943> .
+
+<http://open_science.com/person#59> a ns1:Person ;
+    ns1:first_name "Google  "^^xsd:string ;
+    ns1:label "Google   Brain "^^xsd:string ;
+    ns1:last_name "Brain "^^xsd:string .
+
+<http://open_science.com/person#6> a ns1:Person ;
+    ns1:first_name "Nick  "^^xsd:string ;
+    ns1:label "Nick   Ryder "^^xsd:string ;
+    ns1:last_name "Ryder "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q96211491> .
+
+<http://open_science.com/person#60> a ns1:Person ;
+    ns1:email <nikip@google.com> ;
+    ns1:first_name "Niki  "^^xsd:string ;
+    ns1:label "Niki   Parmar "^^xsd:string ;
+    ns1:last_name "Parmar "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q110864221> .
+
+<http://open_science.com/person#61> a ns1:Person ;
+    ns1:first_name "Jakob  "^^xsd:string ;
+    ns1:label "Jakob   Uszkoreit "^^xsd:string ;
+    ns1:last_name "Uszkoreit "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q98891246> .
+
+<http://open_science.com/person#62> a ns1:Person ;
+    ns1:first_name "Llion  "^^xsd:string ;
+    ns1:label "Llion   Jones "^^xsd:string ;
+    ns1:last_name "Jones "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q47126264> .
+
+<http://open_science.com/person#63> a ns1:Person ;
+    ns1:first_name "Aidan  N "^^xsd:string ;
+    ns1:label "Aidan  N  Gomez "^^xsd:string ;
+    ns1:last_name "Gomez "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q110864219> .
+
+<http://open_science.com/person#64> a ns1:Person ;
+    ns1:email <lukaszkaiser@google.com> ;
+    ns1:first_name "Łukasz  "^^xsd:string ;
+    ns1:label "Łukasz   Kaiser "^^xsd:string ;
+    ns1:last_name "Kaiser "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q30251976> .
+
+<http://open_science.com/person#65> a ns1:Person ;
+    ns1:email <victor@huggingface.co> ;
+    ns1:first_name "Victor  "^^xsd:string ;
+    ns1:label "Victor   Sanh "^^xsd:string ;
+    ns1:last_name "Sanh "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#13>,
+        <http://open_science.com/organization#14>,
+        <http://open_science.com/organization#15> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q108941293> .
+
+<http://open_science.com/person#66> a ns1:Person ;
+    ns1:email <jacobdevlin@google.com> ;
+    ns1:first_name "Jacob  "^^xsd:string ;
+    ns1:label "Jacob   Devlin "^^xsd:string ;
+    ns1:last_name "Devlin "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q57954376> .
+
+<http://open_science.com/person#67> a ns1:Person ;
+    ns1:email <mingweichang@google.com> ;
+    ns1:first_name "Ming-Wei  "^^xsd:string ;
+    ns1:label "Ming-Wei   Chang "^^xsd:string ;
+    ns1:last_name "Chang "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q88254730> .
+
+<http://open_science.com/person#68> a ns1:Person ;
+    ns1:email <kentonl@google.com> ;
+    ns1:first_name "Kenton  "^^xsd:string ;
+    ns1:label "Kenton   Lee "^^xsd:string ;
+    ns1:last_name "Lee "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q83190952> .
+
+<http://open_science.com/person#69> a ns1:Person ;
+    ns1:first_name "Kristina  "^^xsd:string ;
+    ns1:label "Kristina   Toutanova "^^xsd:string ;
+    ns1:last_name "Toutanova "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q57267422> .
+
+<http://open_science.com/person#7> a ns1:Person ;
+    ns1:first_name "Melanie  "^^xsd:string ;
+    ns1:label "Melanie   Subbiah "^^xsd:string ;
+    ns1:last_name "Subbiah "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q115664942> .
+
+<http://open_science.com/person#70> a ns1:Person ;
+    ns1:email <tmikolov@google.com> ;
+    ns1:first_name "Tomas  "^^xsd:string ;
+    ns1:label "Tomas   Mikolov "^^xsd:string ;
+    ns1:last_name "Mikolov "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#16> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q24698708> .
+
+<http://open_science.com/person#71> a ns1:Person ;
+    ns1:email <kaichen@google.com> ;
+    ns1:first_name "Kai  "^^xsd:string ;
+    ns1:label "Kai   Chen "^^xsd:string ;
+    ns1:last_name "Chen "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#16> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q38549126> .
+
+<http://open_science.com/person#72> a ns1:Person ;
+    ns1:email <gcorrado@google.com> ;
+    ns1:first_name "Greg  "^^xsd:string ;
+    ns1:label "Greg   Corrado "^^xsd:string ;
+    ns1:last_name "Corrado "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#16> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q24803072> .
+
+<http://open_science.com/person#73> a ns1:Person ;
+    ns1:first_name "Jeffrey  "^^xsd:string ;
+    ns1:label "Jeffrey   Dean "^^xsd:string ;
+    ns1:last_name "Dean "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#16> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q471309> .
+
+<http://open_science.com/person#74> a ns1:Person ;
+    ns1:email <suching@allenai.org> ;
+    ns1:first_name "Suchin  "^^xsd:string ;
+    ns1:label "Suchin   Gururangan "^^xsd:string ;
+    ns1:last_name "Gururangan "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#17> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q57005661> .
+
+<http://open_science.com/person#75> a ns1:Person ;
+    ns1:email <anam@allenai.org> ;
+    ns1:first_name "Ana  "^^xsd:string ;
+    ns1:label "Ana   Marasović "^^xsd:string ;
+    ns1:last_name "Marasović "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#17>,
+        <http://open_science.com/organization#18>,
+        <http://open_science.com/organization#19>,
+        <http://open_science.com/organization#20> .
+
+<http://open_science.com/person#76> a ns1:Person ;
+    ns1:email <swabhas@allenai.org> ;
+    ns1:first_name "Swabha  "^^xsd:string ;
+    ns1:label "Swabha   Swayamdipta "^^xsd:string ;
+    ns1:last_name "Swayamdipta "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#17> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q57005591> .
+
+<http://open_science.com/person#77> a ns1:Person ;
+    ns1:email <kylel@allenai.org> ;
+    ns1:first_name "Kyle  "^^xsd:string ;
+    ns1:label "Kyle   Lo "^^xsd:string ;
+    ns1:last_name "Lo "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#17> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q104433094> .
+
+<http://open_science.com/person#78> a ns1:Person ;
+    ns1:email <beltagy@allenai.org> ;
+    ns1:first_name "Iz  "^^xsd:string ;
+    ns1:label "Iz   Beltagy "^^xsd:string ;
+    ns1:last_name "Beltagy "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#17> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q104433087> .
+
+<http://open_science.com/person#79> a ns1:Person ;
+    ns1:email <dougd@allenai.org> ;
+    ns1:first_name "Doug  "^^xsd:string ;
+    ns1:label "Doug   Downey "^^xsd:string ;
+    ns1:last_name "Downey "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#17> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q55081048> .
+
+<http://open_science.com/person#8> a ns1:Person ;
+    ns1:first_name "Jared  "^^xsd:string ;
+    ns1:label "Jared   Kaplan "^^xsd:string ;
+    ns1:last_name "Kaplan "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#8> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q102649624> .
+
+<http://open_science.com/person#80> a ns1:Person ;
+    ns1:first_name "Noah  A "^^xsd:string ;
+    ns1:label "Noah  A  Smith "^^xsd:string ;
+    ns1:last_name "Smith "^^xsd:string ;
+    ns1:member <http://open_science.com/organization#17>,
+        <http://open_science.com/organization#18>,
+        <http://open_science.com/organization#19>,
+        <http://open_science.com/organization#20> ;
+    owl:sameAs <https://www.wikidata.org/entity/Q38882473> .
+
+<http://open_science.com/person#9> a ns1:Person ;
+    ns1:first_name "Prafulla  "^^xsd:string ;
+    ns1:label "Prafulla   Dhariwal "^^xsd:string ;
+    ns1:last_name "Dhariwal "^^xsd:string ;
+    owl:sameAs <https://www.wikidata.org/entity/Q115662059> .
+
+<http://open_science.com/organization#0> a ns1:Organization ;
+    rdfs:label "OpenAI" ;
+    ns1:icon "http://commons.wikimedia.org/wiki/Special:FilePath/OpenAI%20Logo.svg"^^xsd:anyURI ;
+    ns1:latitude "37.7775"^^xsd:float ;
+    ns1:longitude "-122.416388888"^^xsd:float ;
+    ns1:name "OpenAI" ;
+    owl:sameAs <https://www.wikidata.org/entity/Q21708200> .
+
+<http://open_science.com/organization#1> a ns1:Organization ;
+    rdfs:label "TerraSwarm" ;
+    ns1:name "TerraSwarm" .
+
+<http://open_science.com/organization#12> a ns1:Organization ;
+    rdfs:label "Microsoft Research" ;
+    ns1:icon "http://commons.wikimedia.org/wiki/Special:FilePath/Segoe%20msr%20logo.png"^^xsd:anyURI ;
+    ns1:latitude "47.669444444"^^xsd:float ;
+    ns1:longitude "-122.123888888"^^xsd:float ;
+    ns1:name "Microsoft Research" ;
+    owl:sameAs <https://www.wikidata.org/entity/Q1144725> .
+
+<http://open_science.com/organization#13> a ns1:Organization ;
+    rdfs:label "Lysandre DEBUT" ;
+    ns1:name "Lysandre DEBUT" .
+
+<http://open_science.com/organization#14> a ns1:Organization ;
+    rdfs:label "Julien CHAUMOND" ;
+    ns1:name "Julien CHAUMOND" .
+
+<http://open_science.com/organization#15> a ns1:Organization ;
+    rdfs:label "Thomas WOLF Hugging Face" ;
+    ns1:name "Thomas WOLF Hugging Face" .
+
+<http://open_science.com/organization#2> a ns1:Organization ;
+    rdfs:label "STARnet" ;
+    ns1:name "STARnet" ;
+    owl:sameAs <https://www.wikidata.org/entity/Q4050035> .
+
+<http://open_science.com/organization#3> a ns1:Organization ;
+    rdfs:label "Semiconductor Research Corporation" ;
+    ns1:name "Semiconductor Research Corporation" ;
+    owl:sameAs <https://www.wikidata.org/entity/Q7449388> .
+
+<http://open_science.com/organization#4> a ns1:Organization ;
+    rdfs:label "MARCO" ;
+    ns1:name "MARCO" ;
+    owl:sameAs <https://www.wikidata.org/entity/Q3395689> .
+
+<http://open_science.com/organization#5> a ns1:Organization ;
+    rdfs:label "DARPA" ;
+    ns1:icon "http://commons.wikimedia.org/wiki/Special:FilePath/DARPA%20Logo%202010.png"^^xsd:anyURI ;
+    ns1:latitude "38.880277777"^^xsd:float ;
+    ns1:longitude "-77.108333333"^^xsd:float ;
+    ns1:name "DARPA" ;
+    owl:sameAs <https://www.wikidata.org/entity/Q207361> .
+
+<http://open_science.com/organization#6> a ns1:Organization ;
+    rdfs:label "Office of Naval Research" ;
+    ns1:icon "http://commons.wikimedia.org/wiki/Special:FilePath/Office%20of%20Naval%20Research%20Official%20Logo.png"^^xsd:anyURI ;
+    ns1:latitude "38.880277777"^^xsd:float ;
+    ns1:longitude "-77.108333333"^^xsd:float ;
+    ns1:name "Office of Naval Research" ;
+    owl:sameAs <https://www.wikidata.org/entity/Q1063818> .
+
+<http://open_science.com/organization#7> a ns1:Organization ;
+    rdfs:label "Google" ;
+    ns1:icon "http://commons.wikimedia.org/wiki/Special:FilePath/Google%202015%20logo.svg"^^xsd:anyURI ;
+    ns1:latitude "37.422053"^^xsd:float ;
+    ns1:longitude "-122.084442"^^xsd:float ;
+    ns1:name "Google" ;
+    owl:sameAs <https://www.wikidata.org/entity/Q95> .
+
+<http://open_science.com/organization#8> a ns1:Organization ;
+    rdfs:label "Johns Hopkins University" ;
+    ns1:icon "http://commons.wikimedia.org/wiki/Special:FilePath/Hopkinslogo2.jpeg"^^xsd:anyURI ;
+    ns1:latitude "39.286388888"^^xsd:float ;
+    ns1:longitude "-76.615"^^xsd:float ;
+    ns1:name "Johns Hopkins University" ;
+    owl:sameAs <https://www.wikidata.org/entity/Q193727> .
+
+<http://open_science.com/paper#1> a ns1:Paper ;
+    rdfs:label "paper-1" ;
+    ns1:abstract """ 
+Recent work has demonstrated substantial gains on many NLP tasks and benchmarks by pre-training on a large corpus of text followed by fine-tuning on a specific task. While typically task-agnostic in architecture, this method still requires task-specific fine-tuning datasets of thousands or tens of thousands of examples. By contrast, humans can generally perform a new language task from only a few examples or from simple instructions -something which current NLP systems still largely struggle to do. Here we show that scaling up language models greatly improves task-agnostic, few-shot performance, sometimes even reaching competitiveness with prior state-of-the-art finetuning approaches. Specifically, we train GPT-3, an autoregressive language model with 175 billion parameters, 10x more than any previous non-sparse language model, and test its performance in the few-shot setting. For all tasks, GPT-3 is applied without any gradient updates or fine-tuning, with tasks and few-shot demonstrations specified purely via text interaction with the model. GPT-3 achieves strong performance on many NLP datasets, including translation, question-answering, and cloze tasks, as well as several tasks that require on-the-fly reasoning or domain adaptation, such as unscrambling words, using a novel word in a sentence, or performing 3-digit arithmetic. At the same time, we also identify some datasets where GPT-3's few-shot learning still struggles, as well as some datasets where GPT-3 faces methodological issues related to training on large web corpora. Finally, we find that GPT-3 can generate samples of news articles which human evaluators have difficulty distinguishing from articles written by humans. We discuss broader societal impacts of this finding and of GPT-3 in general.
+""" ;
+    ns1:acknowledges <http://open_science.com/organization#0> ;
+    ns1:belongs_to_topic <http://open_science.com/topic_belonging#1-0>,
+        <http://open_science.com/topic_belonging#1-1>,
+        <http://open_science.com/topic_belonging#1-2> ;
+    ns1:release_date "2020-07-22"^^xsd:date ;
+    ns1:similar_to <http://open_science.com/similarity#1-2>,
+        <http://open_science.com/similarity#1-3>,
+        <http://open_science.com/similarity#1-4>,
+        <http://open_science.com/similarity#1-5>,
+        <http://open_science.com/similarity#1-6>,
+        <http://open_science.com/similarity#1-7>,
+        <http://open_science.com/similarity#1-8>,
+        <http://open_science.com/similarity#1-9> ;
+    ns1:title "Pronunciation and good language learners" .
+
+<http://open_science.com/project#0> a ns1:Project ;
+    rdfs:label "Award ONR #N00014-13-1-0023"^^xsd:string ;
+    ns1:name "ONR"^^xsd:string ;
+    ns1:project_federal_id "#N00014-13-1-0023"^^xsd:string .
+
+<http://open_science.com/project#1> a ns1:Project ;
+    rdfs:label "Award MURI N00014-18-1-2670"^^xsd:string ;
+    ns1:name "MURI"^^xsd:string ;
+    ns1:project_federal_id "N00014-18-1-2670"^^xsd:string .
+
+<http://open_science.com/similarity#0-1> a ns1:Similarity ;
+    rdfs:label "similarity-0-1" ;
+    ns1:degree "0.68489057"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#1> .
+
+<http://open_science.com/similarity#0-2> a ns1:Similarity ;
+    rdfs:label "similarity-0-2" ;
+    ns1:degree "0.6559324"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#2> .
+
+<http://open_science.com/similarity#0-3> a ns1:Similarity ;
+    rdfs:label "similarity-0-3" ;
+    ns1:degree "0.39857095"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#3> .
+
+<http://open_science.com/similarity#0-4> a ns1:Similarity ;
+    rdfs:label "similarity-0-4" ;
+    ns1:degree "0.36316535"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#4> .
+
+<http://open_science.com/similarity#0-5> a ns1:Similarity ;
+    rdfs:label "similarity-0-5" ;
+    ns1:degree "0.44492385"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#5> .
+
+<http://open_science.com/similarity#0-6> a ns1:Similarity ;
+    rdfs:label "similarity-0-6" ;
+    ns1:degree "0.698509"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#6> .
+
+<http://open_science.com/similarity#0-7> a ns1:Similarity ;
+    rdfs:label "similarity-0-7" ;
+    ns1:degree "0.64963436"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#7> .
+
+<http://open_science.com/similarity#0-8> a ns1:Similarity ;
+    rdfs:label "similarity-0-8" ;
+    ns1:degree "0.48471498"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#8> .
+
+<http://open_science.com/similarity#0-9> a ns1:Similarity ;
+    rdfs:label "similarity-0-9" ;
+    ns1:degree "0.6291123"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#9> .
+
+<http://open_science.com/similarity#1-2> a ns1:Similarity ;
+    rdfs:label "similarity-1-2" ;
+    ns1:degree "0.7720689"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#2> .
+
+<http://open_science.com/similarity#1-3> a ns1:Similarity ;
+    rdfs:label "similarity-1-3" ;
+    ns1:degree "0.43565458"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#3> .
+
+<http://open_science.com/similarity#1-4> a ns1:Similarity ;
+    rdfs:label "similarity-1-4" ;
+    ns1:degree "0.45362663"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#4> .
+
+<http://open_science.com/similarity#1-5> a ns1:Similarity ;
+    rdfs:label "similarity-1-5" ;
+    ns1:degree "0.4939827"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#5> .
+
+<http://open_science.com/similarity#1-6> a ns1:Similarity ;
+    rdfs:label "similarity-1-6" ;
+    ns1:degree "0.76379037"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#6> .
+
+<http://open_science.com/similarity#1-7> a ns1:Similarity ;
+    rdfs:label "similarity-1-7" ;
+    ns1:degree "0.72956586"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#7> .
+
+<http://open_science.com/similarity#1-8> a ns1:Similarity ;
+    rdfs:label "similarity-1-8" ;
+    ns1:degree "0.58569795"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#8> .
+
+<http://open_science.com/similarity#1-9> a ns1:Similarity ;
+    rdfs:label "similarity-1-9" ;
+    ns1:degree "0.7682411"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#9> .
+
+<http://open_science.com/similarity#2-3> a ns1:Similarity ;
+    rdfs:label "similarity-2-3" ;
+    ns1:degree "0.34720546"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#3> .
+
+<http://open_science.com/similarity#2-4> a ns1:Similarity ;
+    rdfs:label "similarity-2-4" ;
+    ns1:degree "0.42639157"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#4> .
+
+<http://open_science.com/similarity#2-5> a ns1:Similarity ;
+    rdfs:label "similarity-2-5" ;
+    ns1:degree "0.58508384"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#5> .
+
+<http://open_science.com/similarity#2-6> a ns1:Similarity ;
+    rdfs:label "similarity-2-6" ;
+    ns1:degree "0.73989636"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#6> .
+
+<http://open_science.com/similarity#2-7> a ns1:Similarity ;
+    rdfs:label "similarity-2-7" ;
+    ns1:degree "0.6962001"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#7> .
+
+<http://open_science.com/similarity#2-8> a ns1:Similarity ;
+    rdfs:label "similarity-2-8" ;
+    ns1:degree "0.5364249"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#8> .
+
+<http://open_science.com/similarity#2-9> a ns1:Similarity ;
+    rdfs:label "similarity-2-9" ;
+    ns1:degree "0.6725727"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#9> .
+
+<http://open_science.com/similarity#3-4> a ns1:Similarity ;
+    rdfs:label "similarity-3-4" ;
+    ns1:degree "0.3443358"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#4> .
+
+<http://open_science.com/similarity#3-5> a ns1:Similarity ;
+    rdfs:label "similarity-3-5" ;
+    ns1:degree "0.34373182"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#5> .
+
+<http://open_science.com/similarity#3-6> a ns1:Similarity ;
+    rdfs:label "similarity-3-6" ;
+    ns1:degree "0.421143"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#6> .
+
+<http://open_science.com/similarity#3-7> a ns1:Similarity ;
+    rdfs:label "similarity-3-7" ;
+    ns1:degree "0.38767275"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#7> .
+
+<http://open_science.com/similarity#3-8> a ns1:Similarity ;
+    rdfs:label "similarity-3-8" ;
+    ns1:degree "0.31443408"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#8> .
+
+<http://open_science.com/similarity#3-9> a ns1:Similarity ;
+    rdfs:label "similarity-3-9" ;
+    ns1:degree "0.33197543"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#9> .
+
+<http://open_science.com/similarity#4-5> a ns1:Similarity ;
+    rdfs:label "similarity-4-5" ;
+    ns1:degree "0.45667988"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#5> .
+
+<http://open_science.com/similarity#4-6> a ns1:Similarity ;
+    rdfs:label "similarity-4-6" ;
+    ns1:degree "0.397835"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#6> .
+
+<http://open_science.com/similarity#4-7> a ns1:Similarity ;
+    rdfs:label "similarity-4-7" ;
+    ns1:degree "0.42571002"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#7> .
+
+<http://open_science.com/similarity#4-8> a ns1:Similarity ;
+    rdfs:label "similarity-4-8" ;
+    ns1:degree "0.34931213"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#8> .
+
+<http://open_science.com/similarity#4-9> a ns1:Similarity ;
+    rdfs:label "similarity-4-9" ;
+    ns1:degree "0.27048263"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#9> .
+
+<http://open_science.com/similarity#5-6> a ns1:Similarity ;
+    rdfs:label "similarity-5-6" ;
+    ns1:degree "0.4612605"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#6> .
+
+<http://open_science.com/similarity#5-7> a ns1:Similarity ;
+    rdfs:label "similarity-5-7" ;
+    ns1:degree "0.5233376"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#7> .
+
+<http://open_science.com/similarity#5-8> a ns1:Similarity ;
+    rdfs:label "similarity-5-8" ;
+    ns1:degree "0.37092873"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#8> .
+
+<http://open_science.com/similarity#5-9> a ns1:Similarity ;
+    rdfs:label "similarity-5-9" ;
+    ns1:degree "0.35753167"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#9> .
+
+<http://open_science.com/similarity#6-7> a ns1:Similarity ;
+    rdfs:label "similarity-6-7" ;
+    ns1:degree "0.7155711"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#7> .
+
+<http://open_science.com/similarity#6-8> a ns1:Similarity ;
+    rdfs:label "similarity-6-8" ;
+    ns1:degree "0.6164545"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#8> .
+
+<http://open_science.com/similarity#6-9> a ns1:Similarity ;
+    rdfs:label "similarity-6-9" ;
+    ns1:degree "0.689316"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#9> .
+
+<http://open_science.com/similarity#7-8> a ns1:Similarity ;
+    rdfs:label "similarity-7-8" ;
+    ns1:degree "0.6604144"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#8> .
+
+<http://open_science.com/similarity#7-9> a ns1:Similarity ;
+    rdfs:label "similarity-7-9" ;
+    ns1:degree "0.63564897"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#9> .
+
+<http://open_science.com/similarity#8-9> a ns1:Similarity ;
+    rdfs:label "similarity-8-9" ;
+    ns1:degree "0.5015038"^^xsd:float ;
+    ns1:similar_from <http://open_science.com/paper#9> .
+
+<http://open_science.com/topic_belonging#0-0> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#0-0" ;
+    ns1:degree "0.002937033000412395"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#0> .
+
+<http://open_science.com/topic_belonging#0-1> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#0-1" ;
+    ns1:degree "0.002922070849259329"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#1> .
+
+<http://open_science.com/topic_belonging#0-2> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#0-2" ;
+    ns1:degree "0.9941408961503283"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#2> .
+
+<http://open_science.com/topic_belonging#1-0> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#1-0" ;
+    ns1:degree "0.001380567149721332"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#0> .
+
+<http://open_science.com/topic_belonging#1-1> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#1-1" ;
+    ns1:degree "0.9973003426218484"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#1> .
+
+<http://open_science.com/topic_belonging#1-2> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#1-2" ;
+    ns1:degree "0.0013190902284300995"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#2> .
+
+<http://open_science.com/topic_belonging#2-0> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#2-0" ;
+    ns1:degree "0.9970278590485977"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#0> .
+
+<http://open_science.com/topic_belonging#2-1> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#2-1" ;
+    ns1:degree "0.0015146887823015765"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#1> .
+
+<http://open_science.com/topic_belonging#2-2> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#2-2" ;
+    ns1:degree "0.0014574521691006791"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#2> .
+
+<http://open_science.com/topic_belonging#3-0> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#3-0" ;
+    ns1:degree "0.0019445225008229102"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#0> .
+
+<http://open_science.com/topic_belonging#3-1> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#3-1" ;
+    ns1:degree "0.9960970023686903"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#1> .
+
+<http://open_science.com/topic_belonging#3-2> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#3-2" ;
+    ns1:degree "0.0019584751304866604"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#2> .
+
+<http://open_science.com/topic_belonging#4-0> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#4-0" ;
+    ns1:degree "0.002015681419942018"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#0> .
+
+<http://open_science.com/topic_belonging#4-1> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#4-1" ;
+    ns1:degree "0.0020579472881671777"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#1> .
+
+<http://open_science.com/topic_belonging#4-2> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#4-2" ;
+    ns1:degree "0.9959263712918908"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#2> .
+
+<http://open_science.com/topic_belonging#5-0> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#5-0" ;
+    ns1:degree "0.0025433876375445244"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#0> .
+
+<http://open_science.com/topic_belonging#5-1> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#5-1" ;
+    ns1:degree "0.0024987878871836704"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#1> .
+
+<http://open_science.com/topic_belonging#5-2> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#5-2" ;
+    ns1:degree "0.9949578244752719"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#2> .
+
+<http://open_science.com/topic_belonging#6-0> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#6-0" ;
+    ns1:degree "0.9957504213451269"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#0> .
+
+<http://open_science.com/topic_belonging#6-1> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#6-1" ;
+    ns1:degree "0.002149766179817204"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#1> .
+
+<http://open_science.com/topic_belonging#6-2> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#6-2" ;
+    ns1:degree "0.002099812475055852"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#2> .
+
+<http://open_science.com/topic_belonging#7-0> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#7-0" ;
+    ns1:degree "0.9952436693564836"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#0> .
+
+<http://open_science.com/topic_belonging#7-1> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#7-1" ;
+    ns1:degree "0.0023750987523329047"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#1> .
+
+<http://open_science.com/topic_belonging#7-2> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#7-2" ;
+    ns1:degree "0.002381231891183583"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#2> .
+
+<http://open_science.com/topic_belonging#8-0> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#8-0" ;
+    ns1:degree "0.00370846604039821"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#0> .
+
+<http://open_science.com/topic_belonging#8-1> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#8-1" ;
+    ns1:degree "0.003780748774264297"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#1> .
+
+<http://open_science.com/topic_belonging#8-2> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#8-2" ;
+    ns1:degree "0.9925107851853375"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#2> .
+
+<http://open_science.com/topic_belonging#9-0> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#9-0" ;
+    ns1:degree "0.002526822843414446"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#0> .
+
+<http://open_science.com/topic_belonging#9-1> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#9-1" ;
+    ns1:degree "0.9949303352896216"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#1> .
+
+<http://open_science.com/topic_belonging#9-2> a ns1:TopicBelonging ;
+    rdfs:label "topic_belonging#9-2" ;
+    ns1:degree "0.002542841866963895"^^xsd:float ;
+    ns1:topic <http://open_science.com/topic#2> .
+
+<http://open_science.com/organization#18> a ns1:Organization ;
+    rdfs:label "Paul G" ;
+    ns1:name "Paul G" .
+
+<http://open_science.com/organization#19> a ns1:Organization ;
+    rdfs:label "Allen School of Computer Science & Engineering" ;
+    ns1:name "Allen School of Computer Science & Engineering" ;
+    owl:sameAs <https://www.wikidata.org/entity/Q98186807> .
+
+<http://open_science.com/organization#20> a ns1:Organization ;
+    rdfs:label "University of Washington" ;
+    ns1:name "University of Washington" ;
+    owl:sameAs <https://www.wikidata.org/entity/Q219563> .
+
+<http://open_science.com/paper#2> a ns1:Paper ;
+    rdfs:label "paper-2" ;
+    ns1:abstract """ 
+An important paradigm of natural language processing consists of large-scale pretraining on general domain data and adaptation to particular tasks or domains. As we pre-train larger models, full fine-tuning, which retrains all model parameters, becomes less feasible. Using GPT-3 175B as an example -deploying independent instances of fine-tuned models, each with 175B parameters, is prohibitively expensive. We propose Low-Rank Adaptation, or LoRA, which freezes the pretrained model weights and injects trainable rank decomposition matrices into each layer of the Transformer architecture, greatly reducing the number of trainable parameters for downstream tasks. Compared to GPT-3 175B fine-tuned with Adam, LoRA can reduce the number of trainable parameters by 10,000 times and the GPU memory requirement by 3 times. LoRA performs on-par or better than finetuning in model quality on RoBERTa, DeBERTa, GPT-2, and GPT-3, despite having fewer trainable parameters, a higher training throughput, and, unlike adapters, no additional inference latency. We also provide an empirical investigation into rank-deficiency in language model adaptation, which sheds light on the efficacy of LoRA. We release a package that facilitates the integration of LoRA with PyTorch models and provide our implementations and model checkpoints for RoBERTa, DeBERTa, and GPT-2 at https://github.com/microsoft/LoRA. * Equal contribution. 0 Compared to V1, this draft includes better baselines, experiments on GLUE, and more on adapter latency. 1 While GPT-3 175B achieves non-trivial performance with few-shot learning, fine-tuning boosts its performance significantly as shown in Appendix A.
+""" ;
+    ns1:belongs_to_topic <http://open_science.com/topic_belonging#2-0>,
+        <http://open_science.com/topic_belonging#2-1>,
+        <http://open_science.com/topic_belonging#2-2> ;
+    ns1:release_date "2021-10-16"^^xsd:date ;
+    ns1:similar_to <http://open_science.com/similarity#2-3>,
+        <http://open_science.com/similarity#2-4>,
+        <http://open_science.com/similarity#2-5>,
+        <http://open_science.com/similarity#2-6>,
+        <http://open_science.com/similarity#2-7>,
+        <http://open_science.com/similarity#2-8>,
+        <http://open_science.com/similarity#2-9> ;
+    ns1:title "LORA: LOW-RANK ADAPTATION OF LARGE LAN-GUAGE MODELS" .
+
+<http://open_science.com/organization#10> a ns1:Organization ;
+    rdfs:label "University of Washington Seattle" ;
+    ns1:name "University of Washington Seattle" ;
+    owl:sameAs <https://www.wikidata.org/entity/Q219563> .
+
+<http://open_science.com/paper#3> a ns1:Paper ;
+    rdfs:label "paper-3" ;
+    ns1:abstract """ 
+Despite widespread adoption, machine learning models remain mostly black boxes. Understanding the reasons behind predictions is, however, quite important in assessing trust, which is fundamental if one plans to take action based on a prediction, or when choosing whether to deploy a new model. Such understanding also provides insights into the model, which can be used to transform an untrustworthy model or prediction into a trustworthy one.In this work, we propose LIME, a novel explanation technique that explains the predictions of any classifier in an interpretable and faithful manner, by learning an interpretable model locally around the prediction. We also propose a method to explain models by presenting representative individual predictions and their explanations in a non-redundant way, framing the task as a submodular optimization problem. We demonstrate the flexibility of these methods by explaining different models for text (e.g. random forests) and image classification (e.g. neural networks). We show the utility of explanations via novel experiments, both simulated and with human subjects, on various scenarios that require trust: deciding if one should trust a prediction, choosing between models, improving an untrustworthy classifier, and identifying why a classifier should not be trusted.
+""" ;
+    ns1:acknowledges <http://open_science.com/organization#1>,
+        <http://open_science.com/organization#2>,
+        <http://open_science.com/organization#3>,
+        <http://open_science.com/organization#4>,
+        <http://open_science.com/organization#5>,
+        <http://open_science.com/project#0> ;
+    ns1:belongs_to_topic <http://open_science.com/topic_belonging#3-0>,
+        <http://open_science.com/topic_belonging#3-1>,
+        <http://open_science.com/topic_belonging#3-2> ;
+    ns1:release_date "2016-08-13"^^xsd:date ;
+    ns1:similar_to <http://open_science.com/similarity#3-4>,
+        <http://open_science.com/similarity#3-5>,
+        <http://open_science.com/similarity#3-6>,
+        <http://open_science.com/similarity#3-7>,
+        <http://open_science.com/similarity#3-8>,
+        <http://open_science.com/similarity#3-9> ;
+    ns1:title "\"Why Should I Trust You?\"" .
+
+<http://open_science.com/organization#16> a ns1:Organization ;
+    rdfs:label "Google Inc" ;
+    ns1:icon "http://commons.wikimedia.org/wiki/Special:FilePath/Google%202015%20logo.svg"^^xsd:anyURI ;
+    ns1:latitude "37.422053"^^xsd:float ;
+    ns1:longitude "-122.084442"^^xsd:float ;
+    ns1:name "Google Inc" ;
+    owl:sameAs <https://www.wikidata.org/entity/Q95> .
+
+<http://open_science.com/paper#4> a ns1:Paper ;
+    rdfs:label "paper-4" ;
+    ns1:abstract """ 
+Warning: This is not an official technical report from OpenAI. Sora is a text-to-video generative AI model, released by OpenAI in February 2024. The model is trained to generate videos of realistic or imaginative scenes from text instructions and show potential in simulating the physical world. Based on public technical reports and reverse engineering, this paper presents a comprehensive review of the model's background, related technologies, applications, remaining challenges, and future directions of text-to-video AI models. We first trace Sora's development and investigate the underlying technologies used to build this "world simulator". Then, we describe in detail the applications and potential impact of Sora in multiple industries ranging from film-making and education to marketing. We discuss the main challenges and limitations that need to be addressed to widely deploy Sora, such as ensuring safe and unbiased video generation. Lastly, we discuss the future development of Sora and video generation models in general, and how advancements in the field could enable new ways of human-AI interaction, boosting productivity and creativity of video generation.
+""" ;
+    ns1:belongs_to_topic <http://open_science.com/topic_belonging#4-0>,
+        <http://open_science.com/topic_belonging#4-1>,
+        <http://open_science.com/topic_belonging#4-2> ;
+    ns1:release_date "2024-02-28"^^xsd:date ;
+    ns1:similar_to <http://open_science.com/similarity#4-5>,
+        <http://open_science.com/similarity#4-6>,
+        <http://open_science.com/similarity#4-7>,
+        <http://open_science.com/similarity#4-8>,
+        <http://open_science.com/similarity#4-9> ;
+    ns1:title "Preface to the book Fast Processes in Large Scale Atmospheric Models: Progress, Challenges and Opportunities" .
+
+<http://open_science.com/paper#5> a ns1:Paper ;
+    rdfs:label "paper-5" ;
+    ns1:abstract """ 
+Equal contribution. Listing order is random. Jakob proposed replacing RNNs with self-attention and started the effort to evaluate this idea. Ashish, with Illia, designed and implemented the first Transformer models and has been crucially involved in every aspect of this work. Noam proposed scaled dot-product attention, multi-head attention and the parameter-free position representation and became the other person involved in nearly every detail. Niki designed, implemented, tuned and evaluated countless model variants in our original codebase and tensor2tensor. Llion also experimented with novel model variants, was responsible for our initial codebase, and efficient inference and visualizations. Lukasz and Aidan spent countless long days designing various parts of and implementing tensor2tensor, replacing our earlier codebase, greatly improving results and massively accelerating our research.† Work performed while at Google Brain. ‡ Work performed while at Google Research.
+""" ;
+    ns1:belongs_to_topic <http://open_science.com/topic_belonging#5-0>,
+        <http://open_science.com/topic_belonging#5-1>,
+        <http://open_science.com/topic_belonging#5-2> ;
+    ns1:release_date "2023-08-02"^^xsd:date ;
+    ns1:similar_to <http://open_science.com/similarity#5-6>,
+        <http://open_science.com/similarity#5-7>,
+        <http://open_science.com/similarity#5-8>,
+        <http://open_science.com/similarity#5-9> ;
+    ns1:title "Attention Is All You Need" .
+
+<http://open_science.com/paper#6> a ns1:Paper ;
+    rdfs:label "paper-6" ;
+    ns1:abstract """ 
+As Transfer Learning from large-scale pre-trained models becomes more prevalent in Natural Language Processing (NLP), operating these large models in on-theedge and/or under constrained computational training or inference budgets remains challenging. In this work, we propose a method to pre-train a smaller generalpurpose language representation model, called DistilBERT, which can then be finetuned with good performances on a wide range of tasks like its larger counterparts. While most prior work investigated the use of distillation for building task-specific models, we leverage knowledge distillation during the pre-training phase and show that it is possible to reduce the size of a BERT model by 40%, while retaining 97% of its language understanding capabilities and being 60% faster. To leverage the inductive biases learned by larger models during pre-training, we introduce a triple loss combining language modeling, distillation and cosine-distance losses. Our smaller, faster and lighter model is cheaper to pre-train and we demonstrate its capabilities for on-device computations in a proof-of-concept experiment and a comparative on-device study.
+""" ;
+    ns1:belongs_to_topic <http://open_science.com/topic_belonging#6-0>,
+        <http://open_science.com/topic_belonging#6-1>,
+        <http://open_science.com/topic_belonging#6-2> ;
+    ns1:similar_to <http://open_science.com/similarity#6-7>,
+        <http://open_science.com/similarity#6-8>,
+        <http://open_science.com/similarity#6-9> ;
+    ns1:title "DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter" .
+
+<http://open_science.com/organization#17> a ns1:Organization ;
+    rdfs:label "Allen Institute for Artificial Intelligence" ;
+    ns1:name "Allen Institute for Artificial Intelligence" ;
+    owl:sameAs <https://www.wikidata.org/entity/Q16002567> .
+
+<http://open_science.com/paper#7> a ns1:Paper ;
+    rdfs:label "paper-7" ;
+    ns1:abstract """ 
+We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a;Radford et al., 2018), BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial taskspecific architecture modifications.BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).
+""" ;
+    ns1:belongs_to_topic <http://open_science.com/topic_belonging#7-0>,
+        <http://open_science.com/topic_belonging#7-1>,
+        <http://open_science.com/topic_belonging#7-2> ;
+    ns1:release_date "2019-05-24"^^xsd:date ;
+    ns1:similar_to <http://open_science.com/similarity#7-8>,
+        <http://open_science.com/similarity#7-9> ;
+    ns1:title "Exploring teachers’ confidence in addressing mental health issues in learners with Profound and Multiple Learning Difficulties (PMLD) pre and post training" .
+
+<http://open_science.com/organization#9> a ns1:Organization ;
+    rdfs:label "Microsoft Corporation" ;
+    ns1:icon "http://commons.wikimedia.org/wiki/Special:FilePath/Microsoft%20logo%20%282012%29.svg"^^xsd:anyURI ;
+    ns1:latitude "47.669444444"^^xsd:float ;
+    ns1:longitude "-122.123888888"^^xsd:float ;
+    ns1:name "Microsoft Corporation" ;
+    owl:sameAs <https://www.wikidata.org/entity/Q2283> .
+
+<http://open_science.com/paper#8> a ns1:Paper ;
+    rdfs:label "paper-8" ;
+    ns1:abstract """ 
+We propose two novel model architectures for computing continuous vector representations of words from very large data sets. The quality of these representations is measured in a word similarity task, and the results are compared to the previously best performing techniques based on different types of neural networks. We observe large improvements in accuracy at much lower computational cost, i.e. it takes less than a day to learn high quality word vectors from a 1.6 billion words data set. Furthermore, we show that these vectors provide state-of-the-art performance on our test set for measuring syntactic and semantic word similarities.
+""" ;
+    ns1:belongs_to_topic <http://open_science.com/topic_belonging#8-0>,
+        <http://open_science.com/topic_belonging#8-1>,
+        <http://open_science.com/topic_belonging#8-2> ;
+    ns1:release_date "2013-09-07"^^xsd:date ;
+    ns1:similar_to <http://open_science.com/similarity#8-9> ;
+    ns1:title "Efficient Estimation of Word Representations in Vector Space" .
+
+<http://open_science.com/paper#9> a ns1:Paper ;
+    rdfs:label "paper-9" ;
+    ns1:abstract """ 
+Language models pretrained on text from a wide variety of sources form the foundation of today's NLP. In light of the success of these broad-coverage models, we investigate whether it is still helpful to tailor a pretrained model to the domain of a target task. We present a study across four domains (biomedical and computer science publications, news, and reviews) and eight classification tasks, showing that a second phase of pretraining indomain (domain-adaptive pretraining) leads to performance gains, under both high-and low-resource settings. Moreover, adapting to the task's unlabeled data (task-adaptive pretraining) improves performance even after domain-adaptive pretraining. Finally, we show that adapting to a task corpus augmented using simple data selection strategies is an effective alternative, especially when resources for domain-adaptive pretraining might be unavailable. Overall, we consistently find that multiphase adaptive pretraining offers large gains in task performance.
+""" ;
+    ns1:acknowledges <http://open_science.com/organization#6>,
+        <http://open_science.com/organization#7>,
+        <http://open_science.com/project#1> ;
+    ns1:belongs_to_topic <http://open_science.com/topic_belonging#9-0>,
+        <http://open_science.com/topic_belonging#9-1>,
+        <http://open_science.com/topic_belonging#9-2> ;
+    ns1:release_date "2020-05-05"^^xsd:date ;
+    ns1:title "Don’t Stop Pretraining: Adapt Language Models to Domains and Tasks" .
+
+<http://open_science.com/topic#0> a ns1:Topic ;
+    rdfs:label "topic-0" ;
+    ns1:keyword "and",
+        "language",
+        "model",
+        "of",
+        "on",
+        "the",
+        "to" .
+
+<http://open_science.com/topic#1> a ns1:Topic ;
+    rdfs:label "topic-1" ;
+    ns1:keyword "and",
+        "in",
+        "of",
+        "task",
+        "the",
+        "to",
+        "we" .
+
+<http://open_science.com/topic#2> a ns1:Topic ;
+    rdfs:label "topic-2" ;
+    ns1:keyword "and",
+        "in",
+        "model",
+        "of",
+        "the",
+        "to",
+        "we" .
+
+<http://open_science.com/organization#11> a ns1:Organization ;
+    rdfs:label "Lehigh University" ;
+    ns1:icon "http://commons.wikimedia.org/wiki/Special:FilePath/Lehigh%20University%20text.png"^^xsd:anyURI ;
+    ns1:latitude "40.626111111"^^xsd:float ;
+    ns1:longitude "-75.375555555"^^xsd:float ;
+    ns1:name "Lehigh University" ;
+    owl:sameAs <https://www.wikidata.org/entity/Q622137> .
+
