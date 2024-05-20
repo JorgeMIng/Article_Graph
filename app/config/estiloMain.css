@@ -1,0 +1,33 @@
+<style>
+
+    button[title="View fullscreen"]{
+        visibility: hidden;
+    }
+
+    .block-container {
+        padding-top: 0rem;
+        padding-bottom: 1rem;
+        padding-right: 5rem;
+        padding-left: 5rem;
+    }
+
+
+    header[data-testid="stHeader"]{
+        /*visibility:hidden;*/
+        height: 0rem;
+    }
+    footer {
+        visibility: hidden;
+        height: 0rem
+    }
+
+
+
+    /* big container */
+    div[class="block-container css-z5fcl4 ea3mdgi4"]{
+        padding-top:0rem;
+        padding-bottom: 0rem;
+    }
+   
+  
+</style>
