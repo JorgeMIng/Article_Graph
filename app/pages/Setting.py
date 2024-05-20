@@ -7,8 +7,10 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 import json
 import webbrowser
 from omegaconf import OmegaConf
+from query_fuseki import FusekiConection,get_uri
 
 from session_persistance import load_session_state,save_session_state
+from pages.Graph_query import query_filtrada
 
 protocols=["http","https"]
 
@@ -42,6 +44,8 @@ def cargar_estado_session():
         st.session_state["port_value"]=get_default_value("port")
     if 'dataset_name_value' not in st.session_state:
         st.session_state["dataset_name_value"]=get_default_value("dataset_name")
+    if 'fuseki_wrapper' not in st.session_state:
+        st.session_state["fuseki_wrapper"] = FusekiConection(st.session_state)
 
 def cargar_css():
     """
@@ -92,9 +96,14 @@ def cargar_logo_y_titulo():
     st.session_state.domain_value=domain
     st.session_state.protocol_value=protocol
     st.session_state.dataset_name_value=dataset_name
-    
+    print("FUCK",type(st.session_state))
+    new_uri=get_uri(st.session_state)
+    if st.session_state.fuseki_wrapper.uri !=new_uri:
+        st.session_state.fuseki_wrapper.change_endpoint_str(new_uri)
+        print("working")
+        st.cache_data.clear()
 
-    new_title = '<p style="color:#00629b;text-align: center; font-size: 20px;">Endpoint URL is '+protocol+'//'+domain+':'+str(port)+"/"+dataset_name+"/query"'</p>'
+    new_title = '<p style="color:#00629b;text-align: center; font-size: 20px;">Endpoint URL is '+st.session_state.fuseki_wrapper.uri+'</p>'
     st.markdown(new_title, unsafe_allow_html=True)
     
     # Botón de GitHub con un estilo más bonito
@@ -102,6 +111,7 @@ def cargar_logo_y_titulo():
         st.write("Redirigiendo a GitHub...")
         webbrowser.open("https://github.com/JorgeMIng/Article Graph")
         # Para que se quite el texto de Redirigiendo... 
+
 
 
 

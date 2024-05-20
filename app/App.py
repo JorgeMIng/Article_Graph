@@ -10,6 +10,7 @@ import webbrowser
 from session_persistance import load_session_state,save_session_state
 
 from omegaconf import OmegaConf
+from query_fuseki import FusekiConection
 
 def cargar_path_modelo():
     """
@@ -37,7 +38,7 @@ def cargar_estado_session():
     
     
         
-    loaded_state = load_session_state()
+    load_session_state()
         
     if 'protocol_value' not in st.session_state:
         st.session_state["protocol_value"]=get_default_value("protocol")
@@ -47,6 +48,8 @@ def cargar_estado_session():
         st.session_state["port_value"]=get_default_value("port")
     if 'dataset_name_value' not in st.session_state:
         st.session_state["dataset_name_value"]=get_default_value("dataset_name")
+    if 'fuseki_wrapper' not in st.session_state:
+        st.session_state["fuseki_wrapper"] = FusekiConection(st.session_state)
 
 def cargar_css():
     """
