@@ -99,6 +99,7 @@ class ArticleGraph:
         """
         Add similarity between two texts to the graph.
         """
+     
         similarity_node = self.ns[f'similarity#{text_id1}-{text_id2}']
 
         # Add the type, label, and similarity score of the Similarity node
@@ -112,7 +113,7 @@ class ArticleGraph:
         paper_node1 = self.ns[f'paper#{text_id1}']
         paper_node2 = self.ns[f'paper#{text_id2}']
         self.graph.add((paper_node1, self.ns['similar_to'], similarity_node))
-        self.graph.add((similarity_node, self.ns['similar_from'], paper_node2))
+        self.graph.add((paper_node2, self.ns['similar_from'], similarity_node))
 
     def add_organization(self, org_id, org_name, icon=None, coordinates=None, wikidata_id=None):
         org_uri = self.ns[f"organization#{org_id}"]
@@ -169,6 +170,11 @@ class ArticleGraph:
         # URI del paper
         paper_uri = self.ns[f"paper#{paper_id}"]
         self.graph.add((paper_uri, self.ns.acknowledges, project_uri))
+        
+    def add_author_paper_relation(self,author_id,paper_id):
+        author_uri = self.ns[f"person#{author_id}"]
+        paper_uri = self.ns[f"paper#{paper_id}"]
+        self.graph.add((author_uri, self.ns.author, paper_uri))
 
     def add_author(self,
                    author_id,

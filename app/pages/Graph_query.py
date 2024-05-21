@@ -92,7 +92,7 @@ def cargar_logo_y_titulo():
 def query_filtrada(paper=None,org=None,author=None):
     query=f"""
     SELECT * WHERE {{
-  ?sub ?pred ?obj .
+    ?sub ?pred ?obj .
   
     }}
 """
