@@ -109,7 +109,7 @@ from streamlit_agraph import agraph, Node, Edge, Config
 
 def id_sub(value):
     partes = value.split('/')
-    return partes[-2]+"_"+partes[-1]
+    return partes[-1]
 
 def id_obj(value):
     partes = value.split('/')
