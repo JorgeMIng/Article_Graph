@@ -48,8 +48,6 @@ def cargar_estado_session():
         st.session_state["port_value"]=get_default_value("port")
     if 'dataset_name_value' not in st.session_state:
         st.session_state["dataset_name_value"]=get_default_value("dataset_name")
-    if 'fuseki_wrapper' not in st.session_state:
-        st.session_state["fuseki_wrapper"] = FusekiConection(st.session_state)
 
 def cargar_css():
     """

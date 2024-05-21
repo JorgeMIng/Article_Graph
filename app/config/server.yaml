@@ -1,4 +1,4 @@
 protocol: http
 domain: yordi111nas.synology.me
 port: 3030
-dataset_name: articles
+dataset_name: articles/query

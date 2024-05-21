@@ -7,12 +7,12 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 import json
 import webbrowser
 from omegaconf import OmegaConf
-from query_fuseki import FusekiConection,get_uri
+from query_fuseki import FusekiConection,get_uri,get_url_short,url_ok
 
 from session_persistance import load_session_state,save_session_state
-from pages.Graph_query import query_filtrada
 
-protocols=["http","https"]
+
+protocols=["None","http","https"]
 
 
 def cargar_pagina():
@@ -45,8 +45,11 @@ def cargar_estado_session():
     if 'dataset_name_value' not in st.session_state:
         st.session_state["dataset_name_value"]=get_default_value("dataset_name")
     if 'fuseki_wrapper' not in st.session_state:
-        st.session_state["fuseki_wrapper"] = FusekiConection(st.session_state)
-
+        try:
+            st.session_state["fuseki_wrapper"] = FusekiConection(st.session_state)
+        except Exception:
+            st.error("Server is not offline")
+            st.session_state["fuseki_wrapper"] = None
 def cargar_css():
     """
     Carga y aplica el archivo de estilo CSS personalizado.
@@ -88,22 +91,47 @@ def cargar_logo_y_titulo():
 
     domain = st.text_input("Select protocol to use",key="domain",help="Select which domain the api will use for conecting the triple store. For example if your triple store uses the dir \"https://hello.com:3030\\dataset\\query\" you write hello.com")
     
-    port = st.number_input("Select port to use",key="port",min_value= 1, max_value = 65535,help= "Select which port the api will use for conecting the triple store. For example if your triple store uses the dir \"https://hello.com:3030\\dataset\\query\" you chose 3030")
+    port = st.number_input("Select port to use  (0 == None port)",key="port",min_value= 0, max_value = 65535,help= "Select which port the api will use for conecting the triple store. For example if your triple store uses the dir \"https://hello.com:3030\\dataset\\query\" you chose 3030, use port 0 for None port")
 
     dataset_name = st.text_input("Select dataset to use",key="dataset_name",help="Select which dataset (yena-fuseki) the api will use for conecting the triple store. For example if your triple store uses the dir \"https://hello.com:3030\\dataset\\query\" you write \"dataset\"")
     
-    st.session_state.port_value=port
-    st.session_state.domain_value=domain
-    st.session_state.protocol_value=protocol
-    st.session_state.dataset_name_value=dataset_name
-    print("FUCK",type(st.session_state))
-    new_uri=get_uri(st.session_state)
-    if st.session_state.fuseki_wrapper.uri !=new_uri:
-        st.session_state.fuseki_wrapper.change_endpoint_str(new_uri)
-        print("working")
-        st.cache_data.clear()
+    change = st.button("Change Settings")
+    
+    if change:
+    
+        st.session_state.port_value=port
+        st.session_state.domain_value=domain
+        st.session_state.protocol_value=protocol
+        st.session_state.dataset_name_value=dataset_name
+   
+        new_uri=get_uri(st.session_state)
+        try:
+            cmp = url_ok(get_url_short(st.session_state))
+        except Exception:
+            cmp=False
+            
+        if not cmp:
+            st.error("Server is offline change uri")
+            st.session_state.fuseki_wrapper=None
+            st.cache_data.clear()
+            
+        elif st.session_state!=None and cmp:
+            try:
+                st.session_state.fuseki_wrapper = FusekiConection(st.session_state)
+            except Exception:
+                st.session_state.fuseki_wrapper=None
+            st.cache_data.clear()
+        elif st.session_state.fuseki_wrapper.uri !=new_uri:
+            st.session_state.fuseki_wrapper.change_endpoint_str(new_uri)
+            st.cache_data.clear()
+        new_title = '<p style="color:#00629b;text-align: center; font-size: 40px;">Settings changed</p>'
+        st.markdown(new_title, unsafe_allow_html=True)
+    new_uri=get_uri(st.session_state)    
+    if st.session_state.fuseki_wrapper!=None:
+        new_title = '<p style="color:#00629b;text-align: center; font-size: 20px;">Endpoint URL is '+st.session_state.fuseki_wrapper.uri+'</p>'
+    else:
+        new_title = '<p style="color:#00629b;text-align: center; font-size: 20px;">Error URL '+get_uri(st.session_state)+' is offline</p>'
 
-    new_title = '<p style="color:#00629b;text-align: center; font-size: 20px;">Endpoint URL is '+st.session_state.fuseki_wrapper.uri+'</p>'
     st.markdown(new_title, unsafe_allow_html=True)
     
     # Botón de GitHub con un estilo más bonito

@@ -12,6 +12,10 @@ from session_persistance import load_session_state,save_session_state
 from omegaconf import OmegaConf
 from query_fuseki import FusekiConection
 
+types_search_list=["Specific ID","All Instances","Full Graph"]
+nodes_types=["Organization","Paper","Person"]
+nodes_types_query=["Organization","paper","person"]
+
 def cargar_path_modelo():
     """
     Configura la ruta para recoger informacion del modelo.
@@ -46,8 +50,25 @@ def cargar_estado_session():
         st.session_state["port_value"]=get_default_value("port")
     if 'dataset_name_value' not in st.session_state:
         st.session_state["dataset_name_value"]=get_default_value("dataset_name")
+    if "type_search_v" not in st.session_state:
+        st.session_state["type_search_v"]=types_search_list[0]
+    if "node_type_v" not in st.session_state:
+        st.session_state["node_type_v"]=nodes_types[0]
+    if "id_node_v" not in st.session_state:
+        st.session_state["id_node_v"]=0
+        
+    if "limit_v" not in st.session_state:
+        st.session_state["limit_v"]=2000
+    
+    
+    
+    
     if 'fuseki_wrapper' not in st.session_state:
-        st.session_state["fuseki_wrapper"] = FusekiConection(st.session_state)
+        try:
+            st.session_state["fuseki_wrapper"] = FusekiConection(st.session_state)
+        except Exception:
+            st.error("Server is not offline")
+            st.session_state["fuseki_wrapper"] = None
 
 def cargar_css():
     """
@@ -56,6 +77,50 @@ def cargar_css():
     css_file_path = "app/config/estiloMain.css"
     css_file_content = open(css_file_path, "r").read()
     st.markdown(css_file_content, unsafe_allow_html=True)
+
+
+
+def side_bar():
+    
+    
+    if "id_node" not in st.session_state:
+        st.session_state["id_node"]=st.session_state["id_node_v"]
+        
+    if "type_search" not in st.session_state :
+        st.session_state["type_search"]=st.session_state["type_search_v"]
+    
+    if "node_type" not in st.session_state:
+        st.session_state["node_type"]=st.session_state["node_type_v"]
+        
+    if "limit_slider" not in st.session_state:
+        st.session_state["limit_slider"]=st.session_state["limit_v"]
+        
+    node_index = nodes_types.index(st.session_state.node_type_v)
+    search_index = types_search_list.index(st.session_state.type_search)
+        
+    
+    type_search= st.selectbox("Type of search",types_search_list,index=search_index,key="type_search",help="Select if the search will use a specific id of a type of node,all the nodes of that type or the full graph")
+    if type_search !="Full Graph":
+        st.selectbox("Type of Node",nodes_types,key="node_type" ,index=node_index,help="Select which node type will be use to search")
+        if type_search=="Specific ID":
+            st.number_input("Node id",key="id_node",min_value=0,help="Node id use for the intial node of the search")
+            
+    st.number_input("Limit nodes",key="limit_slider",min_value=0,step=100,value=st.session_state.limit_v,help="Limit on the amount of triples to extract from the graph")
+    
+    
+    button_query = st.button("Execute Query",key="button_query")
+    
+    
+    
+    st.session_state["limit_v"]=st.session_state["limit_slider"]
+    st.session_state["type_search_v"]=st.session_state["type_search"]
+    st.session_state["node_type_v"]=st.session_state["node_type"]
+    st.session_state["id_node_v"]=st.session_state["id_node"]
+    
+    
+
+
+
 
 def cargar_logo_y_titulo():
     """
@@ -70,15 +135,16 @@ def cargar_logo_y_titulo():
         st.caption("")
         new_title = '<p style="color:#00629b;text-align: center; font-size: 70px;">Article Graph Tool</p>'
         st.markdown(new_title, unsafe_allow_html=True)
-
-    with st.spinner('Executing SPARQL query'):
-        result=query_filtrada()
-    if result!=None:
-        #st.write(result)
-        with st.spinner('Drawing_graph'):
-            draw_graph(result)
+    if st.session_state["button_query"]:
+        with st.spinner('Executing SPARQL query'):
+            result=execute_queries_graph(st.session_state.type_search_v,st.session_state.node_type_v,st.session_state.id_node_v,st.session_state.limit_v)
+        if result!=None:
+            with st.spinner('Drawing_graph'):
+                draw_graph(result)
+        else:
+            st.error("There is no data")
     else:
-        st.error("There is no data")
+        st.warning("Press button to launch query")
     
     
     
@@ -87,16 +153,141 @@ def cargar_logo_y_titulo():
     if st.button("🚀 Visitar el Repositorio en GitHub", key="github_button"):
         st.write("Redirigiendo a GitHub...")
         webbrowser.open("https://github.com/JorgeMIng/Article_Graph")
-     
 
-def query_filtrada(paper=None,org=None,author=None):
+
+def execute_queries_graph(type_search,node_type,id_node,limit):
+    result=None
+    if type_search =="Full Graph":
+       result = full_graph_query(limit)
+    if result!=None and type_search=="Specific ID":
+        result= query_node_specific(id_node,nodes_types_query[nodes_types.index(node_type)],limit)
+    if result!=None and type_search=="All Instances":
+        result = query_node_type(node_type,limit)
+
+    if result==None:
+        st.cache_data.clear()   
+        
+    return result
+@st.cache_data
+def full_graph_query(limit):
+   
+    
     query=f"""
-    SELECT * WHERE {{
-    ?sub ?pred ?obj .
-  
+    SELECT ?sub ?pred ?obj
+    WHERE {{
+        ?sub ?pred ?obj
     }}
-"""
+    LIMIT {limit}
+    """
+
     fuseki=st.session_state["fuseki_wrapper"]
+    if fuseki==None:
+        st.error("Server in settings is offline")
+        return None
+
+    result =fuseki.execute_query(query)
+            
+            
+    return result
+
+@st.cache_data
+def query_node_type(limit,node_type):
+       
+    
+    query=f"""
+    SELECT ?sub ?pred ?obj
+    WHERE {{
+    {{
+        <http://open_science.com/{node_type}> a ?obj1 .
+        BIND(<http://open_science.com/{node_type}> AS ?sub1)
+        
+    }}
+    }}
+    UNION
+    {{
+        ?sub1 a <http://open_science.com/{node_type}#1> .
+        BIND(<http://open_science.com/{node_type}> AS ?obj1)
+    }}
+    # Get all relationships starting from the previously found subjects
+    {{
+        ?sub1 ?pred ?obj .
+        BIND(?sub1 AS ?sub)
+        FILTER (?pred != rdf:type)
+    }}
+    UNION
+    # Get all relationships starting from the previously found objects
+    {{
+        ?obj1 ?pred ?obj .
+        BIND(?obj1 AS ?sub)
+        FILTER (?pred != rdf:type)
+    }}
+    LIMIT {limit}
+    """
+
+    fuseki=st.session_state["fuseki_wrapper"]
+    if fuseki==None:
+        st.error("Server in settings is offline")
+        return None
+
+    result =fuseki.execute_query(query)
+            
+            
+    return result
+     
+@st.cache_data
+def query_node_specific(node_id,node_type,limit):
+    
+    if node_type=="paper":
+        addition="""UNION
+        # Get all keyword relationships
+    {{
+        ?sub ?pred ?obj .
+        FILTER (?pred = <http://open_science.com/keyword>)
+    }}"""
+    
+    
+    query=f"""
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?sub ?pred ?obj
+WHERE {{
+    {{
+        <http://open_science.com/{node_type}#{node_id}> ?pred1 ?obj1 .
+        BIND(<http://open_science.com/{node_type}#{panode_id}> AS ?sub1)
+        
+    }}
+    UNION
+    {{
+        ?sub1 ?pred2 <http://open_science.com/{node_type}#1> .
+        BIND(<http://open_science.com/{node_type}#{node_id}> AS ?obj1)
+    }}
+
+    # Get all relationships starting from the previously found subjects
+    {{
+        ?sub1 ?pred ?obj .
+        BIND(?sub1 AS ?sub)
+        FILTER (?pred != rdf:type)
+    }}
+    UNION
+    # Get all relationships starting from the previously found objects
+    {{
+        ?obj1 ?pred ?obj .
+        BIND(?obj1 AS ?sub)
+        FILTER (?pred != rdf:type)
+    }}
+    # Addition
+    {addition}
+    
+}}
+LIMIT {limit}
+
+
+    """
+
+    fuseki=st.session_state["fuseki_wrapper"]
+    if fuseki==None:
+        st.error("Server in settings is offline")
+        return None
     
     result =fuseki.execute_query(query)
             
@@ -151,7 +342,6 @@ def get_nodes_cache(result_query):
        edges.append(get_edge_pred(triple["sub"],triple["obj"],triple["pred"]))
     return nodes,edges
     
-
 def draw_graph(result_query):
 
 
@@ -203,6 +393,10 @@ def main():
     cargar_pagina()
     cargar_estado_session()
     cargar_css()
+    with st.sidebar:
+        side_bar()
+    
+    
     cargar_logo_y_titulo()
     cargar_pie_pagina()
     save_session_state()
