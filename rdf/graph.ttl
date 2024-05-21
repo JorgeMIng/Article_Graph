@@ -991,7 +991,6 @@
 
 <http://open_science.com/organization#0> a ns1:Organization ;
     rdfs:label "Office of Naval Research" ;
-    ns1:icon "http://commons.wikimedia.org/wiki/Special:FilePath/Office%20of%20Naval%20Research%20Official%20Logo.png"^^xsd:anyURI ;
     ns1:latitude "38.880277777"^^xsd:float ;
     ns1:longitude "-77.108333333"^^xsd:float ;
     ns1:name "Office of Naval Research" ;
@@ -999,7 +998,6 @@
 
 <http://open_science.com/organization#1> a ns1:Organization ;
     rdfs:label "Google" ;
-    ns1:icon "http://commons.wikimedia.org/wiki/Special:FilePath/Google%202015%20logo.svg"^^xsd:anyURI ;
     ns1:latitude "37.422053"^^xsd:float ;
     ns1:longitude "-122.084442"^^xsd:float ;
     ns1:name "Google" ;
@@ -1011,15 +1009,13 @@
 
 <http://open_science.com/organization#15> a ns1:Organization ;
     rdfs:label "Johns Hopkins University" ;
-    ns1:icon "http://commons.wikimedia.org/wiki/Special:FilePath/Hopkinslogo2.jpeg"^^xsd:anyURI ;
-    ns1:latitude "39.286388888"^^xsd:float ;
-    ns1:longitude "-76.615"^^xsd:float ;
+    ns1:latitude "39.328888888"^^xsd:float ;
+    ns1:longitude "-76.620555555"^^xsd:float ;
     ns1:name "Johns Hopkins University" ;
     owl:sameAs <https://www.wikidata.org/entity/Q193727> .
 
 <http://open_science.com/organization#19> a ns1:Organization ;
     rdfs:label "Microsoft Research" ;
-    ns1:icon "http://commons.wikimedia.org/wiki/Special:FilePath/Segoe%20msr%20logo.png"^^xsd:anyURI ;
     ns1:latitude "47.669444444"^^xsd:float ;
     ns1:longitude "-122.123888888"^^xsd:float ;
     ns1:name "Microsoft Research" ;
@@ -1027,7 +1023,6 @@
 
 <http://open_science.com/organization#2> a ns1:Organization ;
     rdfs:label "OpenAI" ;
-    ns1:icon "http://commons.wikimedia.org/wiki/Special:FilePath/OpenAI%20Logo.svg"^^xsd:anyURI ;
     ns1:latitude "37.7775"^^xsd:float ;
     ns1:longitude "-122.416388888"^^xsd:float ;
     ns1:name "OpenAI" ;
@@ -1039,6 +1034,8 @@
 
 <http://open_science.com/organization#4> a ns1:Organization ;
     rdfs:label "STARnet" ;
+    ns1:latitude "47.022777777"^^xsd:float ;
+    ns1:longitude "28.835277777"^^xsd:float ;
     ns1:name "STARnet" ;
     owl:sameAs <https://www.wikidata.org/entity/Q4050035> .
 
@@ -1049,12 +1046,13 @@
 
 <http://open_science.com/organization#6> a ns1:Organization ;
     rdfs:label "MARCO" ;
+    ns1:latitude "42.235833333"^^xsd:float ;
+    ns1:longitude "-8.721111111"^^xsd:float ;
     ns1:name "MARCO" ;
     owl:sameAs <https://www.wikidata.org/entity/Q3395689> .
 
 <http://open_science.com/organization#7> a ns1:Organization ;
     rdfs:label "DARPA" ;
-    ns1:icon "http://commons.wikimedia.org/wiki/Special:FilePath/DARPA%20Logo%202010.png"^^xsd:anyURI ;
     ns1:latitude "38.880277777"^^xsd:float ;
     ns1:longitude "-77.108333333"^^xsd:float ;
     ns1:name "DARPA" ;
@@ -1074,9 +1072,9 @@
     ns1:project_federal_id "N00014-18-1-2670"^^xsd:string .
 
 <http://open_science.com/project#1> a ns1:Project ;
-    rdfs:label "Award ONR #N00014-13-1-0023"^^xsd:string ;
+    rdfs:label "Award ONR #W911NF-13-1-0246"^^xsd:string ;
     ns1:name "ONR"^^xsd:string ;
-    ns1:project_federal_id "#N00014-13-1-0023"^^xsd:string .
+    ns1:project_federal_id "#W911NF-13-1-0246"^^xsd:string .
 
 <http://open_science.com/topic_belonging#0-0> a ns1:TopicBelonging ;
     rdfs:label "topic_belonging#0-0" ;
@@ -1234,11 +1232,15 @@
 
 <http://open_science.com/organization#13> a ns1:Organization ;
     rdfs:label "Allen School of Computer Science & Engineering" ;
+    ns1:latitude "47.65316"^^xsd:float ;
+    ns1:longitude "-122.30531"^^xsd:float ;
     ns1:name "Allen School of Computer Science & Engineering" ;
     owl:sameAs <https://www.wikidata.org/entity/Q98186807> .
 
 <http://open_science.com/organization#14> a ns1:Organization ;
     rdfs:label "University of Washington" ;
+    ns1:latitude "47.654166666"^^xsd:float ;
+    ns1:longitude "-122.308055555"^^xsd:float ;
     ns1:name "University of Washington" ;
     owl:sameAs <https://www.wikidata.org/entity/Q219563> .
 
@@ -1424,12 +1426,13 @@
 
 <http://open_science.com/organization#16> a ns1:Organization ;
     rdfs:label "University of Washington Seattle" ;
+    ns1:latitude "47.654166666"^^xsd:float ;
+    ns1:longitude "-122.308055555"^^xsd:float ;
     ns1:name "University of Washington Seattle" ;
     owl:sameAs <https://www.wikidata.org/entity/Q219563> .
 
 <http://open_science.com/organization#20> a ns1:Organization ;
     rdfs:label "Google Inc" ;
-    ns1:icon "http://commons.wikimedia.org/wiki/Special:FilePath/Google%202015%20logo.svg"^^xsd:anyURI ;
     ns1:latitude "37.422053"^^xsd:float ;
     ns1:longitude "-122.084442"^^xsd:float ;
     ns1:name "Google Inc" ;
@@ -1476,12 +1479,13 @@ As Transfer Learning from large-scale pre-trained models becomes more prevalent 
 
 <http://open_science.com/organization#11> a ns1:Organization ;
     rdfs:label "Allen Institute for Artificial Intelligence" ;
+    ns1:latitude "47.60621"^^xsd:float ;
+    ns1:longitude "-122.33207"^^xsd:float ;
     ns1:name "Allen Institute for Artificial Intelligence" ;
     owl:sameAs <https://www.wikidata.org/entity/Q16002567> .
 
 <http://open_science.com/organization#17> a ns1:Organization ;
     rdfs:label "Microsoft Corporation" ;
-    ns1:icon "http://commons.wikimedia.org/wiki/Special:FilePath/Microsoft%20logo%20%282012%29.svg"^^xsd:anyURI ;
     ns1:latitude "47.669444444"^^xsd:float ;
     ns1:longitude "-122.123888888"^^xsd:float ;
     ns1:name "Microsoft Corporation" ;
@@ -1519,9 +1523,8 @@ As Transfer Learning from large-scale pre-trained models becomes more prevalent 
 
 <http://open_science.com/organization#18> a ns1:Organization ;
     rdfs:label "Lehigh University" ;
-    ns1:icon "http://commons.wikimedia.org/wiki/Special:FilePath/Lehigh%20University%20text.png"^^xsd:anyURI ;
-    ns1:latitude "40.626111111"^^xsd:float ;
-    ns1:longitude "-75.375555555"^^xsd:float ;
+    ns1:latitude "40.607167"^^xsd:float ;
+    ns1:longitude "-75.379"^^xsd:float ;
     ns1:name "Lehigh University" ;
     owl:sameAs <https://www.wikidata.org/entity/Q622137> .
 

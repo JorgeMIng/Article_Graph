@@ -25,16 +25,12 @@ def get_organizations_info(names: list[str]) -> dict[str, dict[str, float] | str
 
     for org_info in reconciled_data.values():
         wikidata_id = org_info['wikidata_id']
-        sparql.setQuery(f"""
-            SELECT ?icon ?coordinates
-            WHERE
-            {{
-                wd:{wikidata_id} wdt:P154 ?icon ;
-                                wdt:P159 ?location .
-                ?location        wdt:P625 ?coordinates
-                SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en" }}
-            }}
-        """)
+        sparql.setQuery(f"""SELECT DISTINCT ?coordinates WHERE {{
+                optional{{wd:{wikidata_id} wdt:P625 ?coordinates}}.
+                optional{{wd:{wikidata_id} wdt:P159 ?sede.
+                        ?sede wdt:P625 ?coordinates}}.
+ 
+}}""")
 
         bindings = sparql.query().convert()['results']['bindings']
 
