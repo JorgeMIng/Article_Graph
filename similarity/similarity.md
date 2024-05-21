@@ -31,5 +31,5 @@ A list of dictionaries, where each dictionary contains:
 - text_id2 (int): Index of the second text in the pair.
 - similarity (float): Cosine similarity score between the two texts.
 
-# Usage example
+## Usage example
 In examples/examples_similarity.ipynb
