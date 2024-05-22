@@ -78,11 +78,12 @@ def cargar_logo_y_titulo():
     with st.spinner('Executing SPARQL query'):
         try:
             result=query_maps()
+            
         except Exception:
             st.error("Error when executing queries check out endpoint url ")
             result=None
     if result!=None:
-        st.write(result)
+        draw_map(result)
     else:
         st.error("There is no data")
     
@@ -93,6 +94,7 @@ def cargar_logo_y_titulo():
     if st.button("🚀 Visitar el Repositorio en GitHub", key="github_button"):
         st.write("Redirigiendo a GitHub...")
         webbrowser.open("https://github.com/JorgeMIng/Article_Graph")
+   
      
 
 def query_maps():
@@ -101,7 +103,7 @@ def query_maps():
     SELECT distinct  ?label ?latitude ?longitude
     WHERE {
     ?subject <http://open_science.com/latitude> ?latitude.
-    ?subject <http://open_science.com/latitude> ?longitude.
+    ?subject <http://open_science.com/longitude> ?longitude.
     ?subject rdfs:label ?label 
     }
 """
@@ -116,72 +118,30 @@ def query_maps():
             
     return result
     
-import streamlit
-from streamlit_agraph import agraph, Node, Edge, Config
-
-
-def id_sub(value):
-    partes = value.split('/')
-    return partes[-1]
-
-def id_obj(value):
-    partes = value.split('/')
-    return partes[-1]
-
-def get_node_sub(sub,nodes_seen,nodes):
-    idx=id_sub(sub["value"])
-    if idx not in nodes_seen:
-        nodes.append(Node(id=idx, label=idx, size=25, shape="circular"))
-        nodes_seen.append(idx)
-
-def get_node_obj(obj,nodes_seen,nodes):
-    idx=id_obj(obj["value"])
-    if idx not in nodes_seen:
-        nodes.append(Node(id=idx, label=idx, size=25, shape="circular"))
-        nodes_seen.append(idx)
-
-def get_edge_pred(sub,obj,pred):
-    id_sub_v=id_sub(sub["value"])
-    id_obj_v=id_obj(obj["value"])
-    id_pred=id_obj(pred["value"])
-    
-    return Edge(source=id_sub_v, 
-                    label=id_pred, 
-                    target=id_obj_v, 
-                    # **kwargs
-                    ) 
-    
-@st.cache_data(show_spinner=False)    
-def get_nodes_cache(result_query):
-    nodes = []
-    nodes_seen=[]
-    edges = []
+import pandas as pd
+from streamlit_folium import st_folium
+import folium
+def draw_map(results):
     
     
-    for triple in result_query:
-       get_node_sub(triple["sub"],nodes_seen,nodes)
-       get_node_obj(triple["obj"],nodes_seen,nodes)
-       edges.append(get_edge_pred(triple["sub"],triple["obj"],triple["pred"]))
-    return nodes,edges
     
+    extracted_data = [
+    {
+        "label": item["label"]["value"],
+        "latitude": item["latitude"]["value"],
+        "longitude": item["longitude"]["value"]
+    }
+    for item in results
+]
+    
+    df = pd.DataFrame(extracted_data)
+    m=folium.Map(location=[extracted_data[0]["latitude"],extracted_data[0]["longitude"]],zoom_start=5)
+    df.apply(lambda row:folium.Marker(location=[row["latitude"], 
+                                                  row["longitude"]],tooltip=row["label"]).add_to(m),
+         axis=1)
 
-def draw_graph(result_query):
+    st_folium(m)
 
-
-    nodes,edges=get_nodes_cache(result_query)
-
-
-    config = Config(width=750,
-                    height=950,
-                    directed=True, 
-                    physics=True, 
-                    hierarchical=False,
-                    # **kwargs
-                    )
-
-    return agraph(nodes=nodes, 
-                        edges=edges, 
-                        config=config)
     
     
     

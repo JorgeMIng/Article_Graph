@@ -14,7 +14,7 @@ from query_fuseki import FusekiConection
 
 types_search_list=["Specific ID","All Instances","Full Graph"]
 nodes_types=["Organization","Paper","Person"]
-nodes_types_query=["Organization","paper","person"]
+nodes_types_query=["organization","paper","person"]
 
 def cargar_path_modelo():
     """
@@ -156,13 +156,14 @@ def cargar_logo_y_titulo():
 
 
 def execute_queries_graph(type_search,node_type,id_node,limit):
+    print("GILLI",type_search,node_type,id_node)
     result=None
     if type_search =="Full Graph":
        result = full_graph_query(limit)
-    if result!=None and type_search=="Specific ID":
+    if result==None and type_search=="Specific ID":
         result= query_node_specific(id_node,nodes_types_query[nodes_types.index(node_type)],limit)
-    if result!=None and type_search=="All Instances":
-        result = query_node_type(node_type,limit)
+    if result==None and type_search=="All Instances":
+        result = query_node_type(limit,node_type)
 
     if result==None:
         st.cache_data.clear()   
@@ -193,8 +194,10 @@ def full_graph_query(limit):
 @st.cache_data
 def query_node_type(limit,node_type):
        
+    print("FUCK",node_type) 
     
     query=f"""
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
     SELECT ?sub ?pred ?obj
     WHERE {{
     {{
@@ -202,28 +205,26 @@ def query_node_type(limit,node_type):
         BIND(<http://open_science.com/{node_type}> AS ?sub1)
         
     }}
-    }}
     UNION
     {{
-        ?sub1 a <http://open_science.com/{node_type}#1> .
+        ?sub1 a <http://open_science.com/{node_type}> .
         BIND(<http://open_science.com/{node_type}> AS ?obj1)
     }}
-    # Get all relationships starting from the previously found subjects
-    {{
-        ?sub1 ?pred ?obj .
-        BIND(?sub1 AS ?sub)
-        FILTER (?pred != rdf:type)
-    }}
-    UNION
-    # Get all relationships starting from the previously found objects
-    {{
-        ?obj1 ?pred ?obj .
-        BIND(?obj1 AS ?sub)
-        FILTER (?pred != rdf:type)
+    
+    
     }}
     LIMIT {limit}
     """
-
+    
+    query=f"""
+        SELECT ?sub ?pred ?obj
+    WHERE {{
+    ?sub a <http://open_science.com/{node_type}> .
+    ?sub ?pred ?obj .
+    }}
+    LIMIT {limit}
+    """
+    print(query)
     fuseki=st.session_state["fuseki_wrapper"]
     if fuseki==None:
         st.error("Server in settings is offline")
@@ -236,7 +237,7 @@ def query_node_type(limit,node_type):
      
 @st.cache_data
 def query_node_specific(node_id,node_type,limit):
-    
+    addition=""
     if node_type=="paper":
         addition="""UNION
         # Get all keyword relationships
@@ -245,7 +246,7 @@ def query_node_specific(node_id,node_type,limit):
         FILTER (?pred = <http://open_science.com/keyword>)
     }}"""
     
-    
+    print("FUCK",node_type)
     query=f"""
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
@@ -253,12 +254,12 @@ SELECT ?sub ?pred ?obj
 WHERE {{
     {{
         <http://open_science.com/{node_type}#{node_id}> ?pred1 ?obj1 .
-        BIND(<http://open_science.com/{node_type}#{panode_id}> AS ?sub1)
+        BIND(<http://open_science.com/{node_type}#{node_id}> AS ?sub1)
         
     }}
     UNION
     {{
-        ?sub1 ?pred2 <http://open_science.com/{node_type}#1> .
+        ?sub1 ?pred2 <http://open_science.com/{node_type}#{node_id}> .
         BIND(<http://open_science.com/{node_type}#{node_id}> AS ?obj1)
     }}
 
