@@ -8,7 +8,7 @@
   "dateModified": "22-05-2024",
   "name": "Article_Graph",
   "version": "1.0.0",
-  "identifier": "TODO",
+  "identifier": "https://zenodo.org/doi/10.5281/zenodo.11242795",
   "description": "Article_Graph is a tool that extracts and enriches information from a set of academic papers and journals. It makes use of advanced and powerful machine learning tools to extract as much information as possible. Also, it uses Grobid to extract all the relevant information about the papers. The final output of this experiment is a RDF Graph that includes all the extracted and reconciled information about the papers and their relations. A simple application is also available to visualize and interact with the KG.",
   "applicationCategory": "Research",
   "developmentStatus": "active",
