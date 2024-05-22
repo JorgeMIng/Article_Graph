@@ -1,0 +1,1081 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "datePublished": "2024-05-22T10:55:57+00:00",
+            "hasPart": [
+                {
+                    "@id": ".gitignore"
+                },
+                {
+                    "@id": ".readthedocs.yaml"
+                },
+                {
+                    "@id": ".readthedocs.yml"
+                },
+                {
+                    "@id": "CITATION.cff"
+                },
+                {
+                    "@id": "codemeta.json"
+                },
+                {
+                    "@id": "create_rocrate.py"
+                },
+                {
+                    "@id": "extract_authors.py"
+                },
+                {
+                    "@id": "get_paper_metadata.py"
+                },
+                {
+                    "@id": "LICENSE"
+                },
+                {
+                    "@id": "README.md"
+                },
+                {
+                    "@id": "requirements.txt"
+                },
+                {
+                    "@id": "requirements_app.txt"
+                },
+                {
+                    "@id": "Start.py"
+                },
+                {
+                    "@id": "__init__.py"
+                },
+                {
+                    "@id": "app/App.py"
+                },
+                {
+                    "@id": "app/query_fuseki.py"
+                },
+                {
+                    "@id": "app/session_persistance.py"
+                },
+                {
+                    "@id": "app/test.ipynb"
+                },
+                {
+                    "@id": "app/__init__.py"
+                },
+                {
+                    "@id": "app/config/data_config.json"
+                },
+                {
+                    "@id": "app/config/estiloMain.css"
+                },
+                {
+                    "@id": "app/config/server.yaml"
+                },
+                {
+                    "@id": "app/images/logo.png"
+                },
+                {
+                    "@id": "app/images/logo_top.png"
+                },
+                {
+                    "@id": "app/images/animated/graph.json"
+                },
+                {
+                    "@id": "app/images/animated/graph_2.json"
+                },
+                {
+                    "@id": "app/pages/Graph_query.py"
+                },
+                {
+                    "@id": "app/pages/Map_orgs.py"
+                },
+                {
+                    "@id": "app/pages/Setting.py"
+                },
+                {
+                    "@id": "app/pages/__init__.py"
+                },
+                {
+                    "@id": "app/sessions/session_state.pkl"
+                },
+                {
+                    "@id": "article_graph/article_graph.py"
+                },
+                {
+                    "@id": "article_graph/extend_author.py"
+                },
+                {
+                    "@id": "article_graph/recon.py"
+                },
+                {
+                    "@id": "article_graph/_utils.py"
+                },
+                {
+                    "@id": "article_graph/__init__.py"
+                },
+                {
+                    "@id": "config/__init__.py"
+                },
+                {
+                    "@id": "config/api/api-base-config.yaml"
+                },
+                {
+                    "@id": "config/api/count-config.yaml"
+                },
+                {
+                    "@id": "config/api/extract_element.yaml"
+                },
+                {
+                    "@id": "config/api/grobid-server-config.yaml"
+                },
+                {
+                    "@id": "config/api/list_links-config.yaml"
+                },
+                {
+                    "@id": "config/api/word-cloud-config.yaml"
+                },
+                {
+                    "@id": "data/PDFs/nlp/Bert.pdf"
+                },
+                {
+                    "@id": "data/PDFs/nlp/DistillBERT.pdf"
+                },
+                {
+                    "@id": "data/PDFs/nlp/Dont_stop_pretraining.pdf"
+                },
+                {
+                    "@id": "data/PDFs/nlp/GPT-3.pdf"
+                },
+                {
+                    "@id": "data/PDFs/nlp/LIME.pdf"
+                },
+                {
+                    "@id": "data/PDFs/nlp/LoRA.pdf"
+                },
+                {
+                    "@id": "data/PDFs/nlp/RoBERTa.pdf"
+                },
+                {
+                    "@id": "data/PDFs/nlp/SORA.pdf"
+                },
+                {
+                    "@id": "data/PDFs/nlp/Transformers.pdf"
+                },
+                {
+                    "@id": "data/PDFs/nlp/word2vec.pdf"
+                },
+                {
+                    "@id": "docker/dockerfile"
+                },
+                {
+                    "@id": "examples/article_graph.ipynb"
+                },
+                {
+                    "@id": "examples/examples_similarity.ipynb"
+                },
+                {
+                    "@id": "examples/topic_modeling.ipynb"
+                },
+                {
+                    "@id": "examples/__init__.py"
+                },
+                {
+                    "@id": "examples/config/__init__.py"
+                },
+                {
+                    "@id": "examples/config/api/api-base-config.yaml"
+                },
+                {
+                    "@id": "examples/config/api/count-config.yaml"
+                },
+                {
+                    "@id": "examples/config/api/extract_element.yaml"
+                },
+                {
+                    "@id": "examples/config/api/grobid-server-config.yaml"
+                },
+                {
+                    "@id": "examples/config/api/list_links-config.yaml"
+                },
+                {
+                    "@id": "examples/config/api/word-cloud-config.yaml"
+                },
+                {
+                    "@id": "examples/data/PDFs/Bert.pdf"
+                },
+                {
+                    "@id": "examples/data/PDFs/DistillBERT.pdf"
+                },
+                {
+                    "@id": "examples/data/PDFs/Dont_stop_pretraining.pdf"
+                },
+                {
+                    "@id": "examples/data/PDFs/GPT-3.pdf"
+                },
+                {
+                    "@id": "examples/data/PDFs/LIME.pdf"
+                },
+                {
+                    "@id": "examples/data/PDFs/LoRA.pdf"
+                },
+                {
+                    "@id": "examples/data/PDFs/RoBERTa.pdf"
+                },
+                {
+                    "@id": "examples/data/PDFs/SORA.pdf"
+                },
+                {
+                    "@id": "examples/data/PDFs/Transformers.pdf"
+                },
+                {
+                    "@id": "examples/data/PDFs/word2vec.pdf"
+                },
+                {
+                    "@id": "examples/data/xmls/Bert.grobid.tei.xml"
+                },
+                {
+                    "@id": "examples/data/xmls/DistillBERT.grobid.tei.xml"
+                },
+                {
+                    "@id": "examples/data/xmls/Dont_stop_pretraining.grobid.tei.xml"
+                },
+                {
+                    "@id": "examples/data/xmls/GPT-3.grobid.tei.xml"
+                },
+                {
+                    "@id": "examples/data/xmls/LIME.grobid.tei.xml"
+                },
+                {
+                    "@id": "examples/data/xmls/LoRA.grobid.tei.xml"
+                },
+                {
+                    "@id": "examples/data/xmls/RoBERTa.grobid.tei.xml"
+                },
+                {
+                    "@id": "examples/data/xmls/SORA.grobid.tei.xml"
+                },
+                {
+                    "@id": "examples/data/xmls/Transformers.grobid.tei.xml"
+                },
+                {
+                    "@id": "examples/data/xmls/word2vec.grobid.tei.xml"
+                },
+                {
+                    "@id": "examples/logs/grobid_logger_d_05_2024/debug.log"
+                },
+                {
+                    "@id": "examples/logs/grobid_logger_d_05_2024/info.log"
+                },
+                {
+                    "@id": "ner/extract_element.ipynb"
+                },
+                {
+                    "@id": "ner/extract_ner.py"
+                },
+                {
+                    "@id": "ner/__init__.py"
+                },
+                {
+                    "@id": "ner/config/__init__.py"
+                },
+                {
+                    "@id": "ner/config/api/api-base-config.yaml"
+                },
+                {
+                    "@id": "ner/config/api/count-config.yaml"
+                },
+                {
+                    "@id": "ner/config/api/extract_element.yaml"
+                },
+                {
+                    "@id": "ner/config/api/grobid-server-config.yaml"
+                },
+                {
+                    "@id": "ner/config/api/list_links-config.yaml"
+                },
+                {
+                    "@id": "ner/config/api/word-cloud-config.yaml"
+                },
+                {
+                    "@id": "ner/data/PDFs/nlp/Bert.pdf"
+                },
+                {
+                    "@id": "ner/data/PDFs/nlp/DistillBERT.pdf"
+                },
+                {
+                    "@id": "ner/data/PDFs/nlp/Dont_stop_pretraining.pdf"
+                },
+                {
+                    "@id": "ner/data/PDFs/nlp/GPT-3.pdf"
+                },
+                {
+                    "@id": "ner/data/PDFs/nlp/LIME.pdf"
+                },
+                {
+                    "@id": "ner/data/PDFs/nlp/LoRA.pdf"
+                },
+                {
+                    "@id": "ner/data/PDFs/nlp/RoBERTa.pdf"
+                },
+                {
+                    "@id": "ner/data/PDFs/nlp/SORA.pdf"
+                },
+                {
+                    "@id": "ner/data/PDFs/nlp/Transformers.pdf"
+                },
+                {
+                    "@id": "ner/data/PDFs/nlp/word2vec.pdf"
+                },
+                {
+                    "@id": "ontology/ontology_graph.drawio.xml"
+                },
+                {
+                    "@id": "ontology/ontology_graph.jpg"
+                },
+                {
+                    "@id": "ontology/ontology_graph.ttl"
+                },
+                {
+                    "@id": "rdf/graph.ttl"
+                },
+                {
+                    "@id": "similarity/Model.py"
+                },
+                {
+                    "@id": "similarity/similarity.md"
+                },
+                {
+                    "@id": "similarity/__init__.py"
+                },
+                {
+                    "@id": "topic_modeling/lda.py"
+                },
+                {
+                    "@id": "topic_modeling/__init__.py"
+                }
+            ]
+        },
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            }
+        },
+        {
+            "@id": "#Marco",
+            "@type": "Person",
+            "name": "Marco Ciccal\u00e8 Bazt\u00e1n"
+        },
+        {
+            "@id": "#Jorge",
+            "@type": "Person",
+            "name": "Jorge Mart\u00edn Izquierdo"
+        },
+        {
+            "@id": "#Gloria",
+            "@type": "Person",
+            "name": "Mar\u00eda Gloria Cumia Espinosa de los Monteros"
+        },
+        {
+            "@id": ".gitignore",
+            "@type": "File",
+            "encodingFormat": "text/plain",
+            "name": ".gitignore"
+        },
+        {
+            "@id": ".readthedocs.yaml",
+            "@type": "File",
+            "encodingFormat": "application/x-yaml",
+            "name": ".readthedocs.yaml"
+        },
+        {
+            "@id": ".readthedocs.yml",
+            "@type": "File",
+            "encodingFormat": "text/plain",
+            "name": ".readthedocs.yml"
+        },
+        {
+            "@id": "CITATION.cff",
+            "@type": "File",
+            "encodingFormat": "text/x-citation",
+            "name": "CITATION.cff"
+        },
+        {
+            "@id": "codemeta.json",
+            "@type": "File",
+            "encodingFormat": "application/json",
+            "name": "codemeta.json"
+        },
+        {
+            "@id": "create_rocrate.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "create_rocrate.py"
+        },
+        {
+            "@id": "extract_authors.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "extract_authors.py"
+        },
+        {
+            "@id": "get_paper_metadata.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "get_paper_metadata.py"
+        },
+        {
+            "@id": "LICENSE",
+            "@type": "File",
+            "encodingFormat": "text/plain",
+            "name": "LICENSE"
+        },
+        {
+            "@id": "README.md",
+            "@type": "File",
+            "encodingFormat": "text/markdown",
+            "name": "README.md"
+        },
+        {
+            "@id": "requirements.txt",
+            "@type": "File",
+            "encodingFormat": "text/plain",
+            "name": "requirements.txt"
+        },
+        {
+            "@id": "requirements_app.txt",
+            "@type": "File",
+            "encodingFormat": "text/plain",
+            "name": "requirements_app.txt"
+        },
+        {
+            "@id": "Start.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "Start.py"
+        },
+        {
+            "@id": "__init__.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "__init__.py"
+        },
+        {
+            "@id": "app/App.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "App.py"
+        },
+        {
+            "@id": "app/query_fuseki.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "query_fuseki.py"
+        },
+        {
+            "@id": "app/session_persistance.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "session_persistance.py"
+        },
+        {
+            "@id": "app/test.ipynb",
+            "@type": "File",
+            "encodingFormat": "application/x-ipynb+json",
+            "name": "test.ipynb"
+        },
+        {
+            "@id": "app/__init__.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "__init__.py"
+        },
+        {
+            "@id": "app/config/data_config.json",
+            "@type": "File",
+            "encodingFormat": "application/json",
+            "name": "data_config.json"
+        },
+        {
+            "@id": "app/config/estiloMain.css",
+            "@type": "File",
+            "encodingFormat": "text/plain",
+            "name": "estiloMain.css"
+        },
+        {
+            "@id": "app/config/server.yaml",
+            "@type": "File",
+            "encodingFormat": "application/x-yaml",
+            "name": "server.yaml"
+        },
+        {
+            "@id": "app/images/logo.png",
+            "@type": "File",
+            "encodingFormat": "text/plain",
+            "name": "logo.png"
+        },
+        {
+            "@id": "app/images/logo_top.png",
+            "@type": "File",
+            "encodingFormat": "text/plain",
+            "name": "logo_top.png"
+        },
+        {
+            "@id": "app/images/animated/graph.json",
+            "@type": "File",
+            "encodingFormat": "application/json",
+            "name": "graph.json"
+        },
+        {
+            "@id": "app/images/animated/graph_2.json",
+            "@type": "File",
+            "encodingFormat": "application/json",
+            "name": "graph_2.json"
+        },
+        {
+            "@id": "app/pages/Graph_query.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "Graph_query.py"
+        },
+        {
+            "@id": "app/pages/Map_orgs.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "Map_orgs.py"
+        },
+        {
+            "@id": "app/pages/Setting.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "Setting.py"
+        },
+        {
+            "@id": "app/pages/__init__.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "__init__.py"
+        },
+        {
+            "@id": "app/sessions/session_state.pkl",
+            "@type": "File",
+            "encodingFormat": "text/plain",
+            "name": "session_state.pkl"
+        },
+        {
+            "@id": "article_graph/article_graph.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "article_graph.py"
+        },
+        {
+            "@id": "article_graph/extend_author.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "extend_author.py"
+        },
+        {
+            "@id": "article_graph/recon.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "recon.py"
+        },
+        {
+            "@id": "article_graph/_utils.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "_utils.py"
+        },
+        {
+            "@id": "article_graph/__init__.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "__init__.py"
+        },
+        {
+            "@id": "config/__init__.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "__init__.py"
+        },
+        {
+            "@id": "config/api/api-base-config.yaml",
+            "@type": "File",
+            "encodingFormat": "application/x-yaml",
+            "name": "api-base-config.yaml"
+        },
+        {
+            "@id": "config/api/count-config.yaml",
+            "@type": "File",
+            "encodingFormat": "application/x-yaml",
+            "name": "count-config.yaml"
+        },
+        {
+            "@id": "config/api/extract_element.yaml",
+            "@type": "File",
+            "encodingFormat": "application/x-yaml",
+            "name": "extract_element.yaml"
+        },
+        {
+            "@id": "config/api/grobid-server-config.yaml",
+            "@type": "File",
+            "encodingFormat": "application/x-yaml",
+            "name": "grobid-server-config.yaml"
+        },
+        {
+            "@id": "config/api/list_links-config.yaml",
+            "@type": "File",
+            "encodingFormat": "application/x-yaml",
+            "name": "list_links-config.yaml"
+        },
+        {
+            "@id": "config/api/word-cloud-config.yaml",
+            "@type": "File",
+            "encodingFormat": "application/x-yaml",
+            "name": "word-cloud-config.yaml"
+        },
+        {
+            "@id": "data/PDFs/nlp/Bert.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "Bert.pdf"
+        },
+        {
+            "@id": "data/PDFs/nlp/DistillBERT.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "DistillBERT.pdf"
+        },
+        {
+            "@id": "data/PDFs/nlp/Dont_stop_pretraining.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "Dont_stop_pretraining.pdf"
+        },
+        {
+            "@id": "data/PDFs/nlp/GPT-3.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "GPT-3.pdf"
+        },
+        {
+            "@id": "data/PDFs/nlp/LIME.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "LIME.pdf"
+        },
+        {
+            "@id": "data/PDFs/nlp/LoRA.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "LoRA.pdf"
+        },
+        {
+            "@id": "data/PDFs/nlp/RoBERTa.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "RoBERTa.pdf"
+        },
+        {
+            "@id": "data/PDFs/nlp/SORA.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "SORA.pdf"
+        },
+        {
+            "@id": "data/PDFs/nlp/Transformers.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "Transformers.pdf"
+        },
+        {
+            "@id": "data/PDFs/nlp/word2vec.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "word2vec.pdf"
+        },
+        {
+            "@id": "docker/dockerfile",
+            "@type": "File",
+            "encodingFormat": "text/plain",
+            "name": "dockerfile"
+        },
+        {
+            "@id": "examples/article_graph.ipynb",
+            "@type": "File",
+            "encodingFormat": "application/x-ipynb+json",
+            "name": "article_graph.ipynb"
+        },
+        {
+            "@id": "examples/examples_similarity.ipynb",
+            "@type": "File",
+            "encodingFormat": "application/x-ipynb+json",
+            "name": "examples_similarity.ipynb"
+        },
+        {
+            "@id": "examples/topic_modeling.ipynb",
+            "@type": "File",
+            "encodingFormat": "application/x-ipynb+json",
+            "name": "topic_modeling.ipynb"
+        },
+        {
+            "@id": "examples/__init__.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "__init__.py"
+        },
+        {
+            "@id": "examples/config/__init__.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "__init__.py"
+        },
+        {
+            "@id": "examples/config/api/api-base-config.yaml",
+            "@type": "File",
+            "encodingFormat": "application/x-yaml",
+            "name": "api-base-config.yaml"
+        },
+        {
+            "@id": "examples/config/api/count-config.yaml",
+            "@type": "File",
+            "encodingFormat": "application/x-yaml",
+            "name": "count-config.yaml"
+        },
+        {
+            "@id": "examples/config/api/extract_element.yaml",
+            "@type": "File",
+            "encodingFormat": "application/x-yaml",
+            "name": "extract_element.yaml"
+        },
+        {
+            "@id": "examples/config/api/grobid-server-config.yaml",
+            "@type": "File",
+            "encodingFormat": "application/x-yaml",
+            "name": "grobid-server-config.yaml"
+        },
+        {
+            "@id": "examples/config/api/list_links-config.yaml",
+            "@type": "File",
+            "encodingFormat": "application/x-yaml",
+            "name": "list_links-config.yaml"
+        },
+        {
+            "@id": "examples/config/api/word-cloud-config.yaml",
+            "@type": "File",
+            "encodingFormat": "application/x-yaml",
+            "name": "word-cloud-config.yaml"
+        },
+        {
+            "@id": "examples/data/PDFs/Bert.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "Bert.pdf"
+        },
+        {
+            "@id": "examples/data/PDFs/DistillBERT.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "DistillBERT.pdf"
+        },
+        {
+            "@id": "examples/data/PDFs/Dont_stop_pretraining.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "Dont_stop_pretraining.pdf"
+        },
+        {
+            "@id": "examples/data/PDFs/GPT-3.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "GPT-3.pdf"
+        },
+        {
+            "@id": "examples/data/PDFs/LIME.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "LIME.pdf"
+        },
+        {
+            "@id": "examples/data/PDFs/LoRA.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "LoRA.pdf"
+        },
+        {
+            "@id": "examples/data/PDFs/RoBERTa.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "RoBERTa.pdf"
+        },
+        {
+            "@id": "examples/data/PDFs/SORA.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "SORA.pdf"
+        },
+        {
+            "@id": "examples/data/PDFs/Transformers.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "Transformers.pdf"
+        },
+        {
+            "@id": "examples/data/PDFs/word2vec.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "word2vec.pdf"
+        },
+        {
+            "@id": "examples/data/xmls/Bert.grobid.tei.xml",
+            "@type": "File",
+            "encodingFormat": "application/xml",
+            "name": "Bert.grobid.tei.xml"
+        },
+        {
+            "@id": "examples/data/xmls/DistillBERT.grobid.tei.xml",
+            "@type": "File",
+            "encodingFormat": "application/xml",
+            "name": "DistillBERT.grobid.tei.xml"
+        },
+        {
+            "@id": "examples/data/xmls/Dont_stop_pretraining.grobid.tei.xml",
+            "@type": "File",
+            "encodingFormat": "application/xml",
+            "name": "Dont_stop_pretraining.grobid.tei.xml"
+        },
+        {
+            "@id": "examples/data/xmls/GPT-3.grobid.tei.xml",
+            "@type": "File",
+            "encodingFormat": "application/xml",
+            "name": "GPT-3.grobid.tei.xml"
+        },
+        {
+            "@id": "examples/data/xmls/LIME.grobid.tei.xml",
+            "@type": "File",
+            "encodingFormat": "application/xml",
+            "name": "LIME.grobid.tei.xml"
+        },
+        {
+            "@id": "examples/data/xmls/LoRA.grobid.tei.xml",
+            "@type": "File",
+            "encodingFormat": "application/xml",
+            "name": "LoRA.grobid.tei.xml"
+        },
+        {
+            "@id": "examples/data/xmls/RoBERTa.grobid.tei.xml",
+            "@type": "File",
+            "encodingFormat": "application/xml",
+            "name": "RoBERTa.grobid.tei.xml"
+        },
+        {
+            "@id": "examples/data/xmls/SORA.grobid.tei.xml",
+            "@type": "File",
+            "encodingFormat": "application/xml",
+            "name": "SORA.grobid.tei.xml"
+        },
+        {
+            "@id": "examples/data/xmls/Transformers.grobid.tei.xml",
+            "@type": "File",
+            "encodingFormat": "application/xml",
+            "name": "Transformers.grobid.tei.xml"
+        },
+        {
+            "@id": "examples/data/xmls/word2vec.grobid.tei.xml",
+            "@type": "File",
+            "encodingFormat": "application/xml",
+            "name": "word2vec.grobid.tei.xml"
+        },
+        {
+            "@id": "examples/logs/grobid_logger_d_05_2024/debug.log",
+            "@type": "File",
+            "encodingFormat": "text/plain",
+            "name": "debug.log"
+        },
+        {
+            "@id": "examples/logs/grobid_logger_d_05_2024/info.log",
+            "@type": "File",
+            "encodingFormat": "text/plain",
+            "name": "info.log"
+        },
+        {
+            "@id": "ner/extract_element.ipynb",
+            "@type": "File",
+            "encodingFormat": "application/x-ipynb+json",
+            "name": "extract_element.ipynb"
+        },
+        {
+            "@id": "ner/extract_ner.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "extract_ner.py"
+        },
+        {
+            "@id": "ner/__init__.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "__init__.py"
+        },
+        {
+            "@id": "ner/config/__init__.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "__init__.py"
+        },
+        {
+            "@id": "ner/config/api/api-base-config.yaml",
+            "@type": "File",
+            "encodingFormat": "application/x-yaml",
+            "name": "api-base-config.yaml"
+        },
+        {
+            "@id": "ner/config/api/count-config.yaml",
+            "@type": "File",
+            "encodingFormat": "application/x-yaml",
+            "name": "count-config.yaml"
+        },
+        {
+            "@id": "ner/config/api/extract_element.yaml",
+            "@type": "File",
+            "encodingFormat": "application/x-yaml",
+            "name": "extract_element.yaml"
+        },
+        {
+            "@id": "ner/config/api/grobid-server-config.yaml",
+            "@type": "File",
+            "encodingFormat": "application/x-yaml",
+            "name": "grobid-server-config.yaml"
+        },
+        {
+            "@id": "ner/config/api/list_links-config.yaml",
+            "@type": "File",
+            "encodingFormat": "application/x-yaml",
+            "name": "list_links-config.yaml"
+        },
+        {
+            "@id": "ner/config/api/word-cloud-config.yaml",
+            "@type": "File",
+            "encodingFormat": "application/x-yaml",
+            "name": "word-cloud-config.yaml"
+        },
+        {
+            "@id": "ner/data/PDFs/nlp/Bert.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "Bert.pdf"
+        },
+        {
+            "@id": "ner/data/PDFs/nlp/DistillBERT.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "DistillBERT.pdf"
+        },
+        {
+            "@id": "ner/data/PDFs/nlp/Dont_stop_pretraining.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "Dont_stop_pretraining.pdf"
+        },
+        {
+            "@id": "ner/data/PDFs/nlp/GPT-3.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "GPT-3.pdf"
+        },
+        {
+            "@id": "ner/data/PDFs/nlp/LIME.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "LIME.pdf"
+        },
+        {
+            "@id": "ner/data/PDFs/nlp/LoRA.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "LoRA.pdf"
+        },
+        {
+            "@id": "ner/data/PDFs/nlp/RoBERTa.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "RoBERTa.pdf"
+        },
+        {
+            "@id": "ner/data/PDFs/nlp/SORA.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "SORA.pdf"
+        },
+        {
+            "@id": "ner/data/PDFs/nlp/Transformers.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "Transformers.pdf"
+        },
+        {
+            "@id": "ner/data/PDFs/nlp/word2vec.pdf",
+            "@type": "File",
+            "encodingFormat": "application/pdf",
+            "name": "word2vec.pdf"
+        },
+        {
+            "@id": "ontology/ontology_graph.drawio.xml",
+            "@type": "File",
+            "encodingFormat": "application/xml",
+            "name": "ontology_graph.drawio.xml"
+        },
+        {
+            "@id": "ontology/ontology_graph.jpg",
+            "@type": "File",
+            "encodingFormat": "image/jpeg",
+            "name": "ontology_graph.jpg"
+        },
+        {
+            "@id": "ontology/ontology_graph.ttl",
+            "@type": "File",
+            "encodingFormat": "text/turtle",
+            "name": "ontology_graph.ttl"
+        },
+        {
+            "@id": "rdf/graph.ttl",
+            "@type": "File",
+            "encodingFormat": "text/turtle",
+            "name": "graph.ttl"
+        },
+        {
+            "@id": "similarity/Model.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "Model.py"
+        },
+        {
+            "@id": "similarity/similarity.md",
+            "@type": "File",
+            "encodingFormat": "text/markdown",
+            "name": "similarity.md"
+        },
+        {
+            "@id": "similarity/__init__.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "__init__.py"
+        },
+        {
+            "@id": "topic_modeling/lda.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "lda.py"
+        },
+        {
+            "@id": "topic_modeling/__init__.py",
+            "@type": "File",
+            "encodingFormat": "text/x-python",
+            "name": "__init__.py"
+        }
+    ]
+}
