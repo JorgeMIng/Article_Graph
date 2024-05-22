@@ -164,6 +164,7 @@ pip install -r requirements.txt
 - Full KG Generation: `examples/article_graph.ipynb`
 - Similarity Analysis: `examples/examples_similarity.ipynb`
 - Topic Modeling: `examples/topic_modeling.ipynb`
+- NER Analysis and Project extracton: `ner/extract_element.ipynb`
 
 ## License
 
