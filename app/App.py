@@ -77,18 +77,11 @@ def cargar_logo_y_titulo():
         new_title = '<p style="color:#00629b;text-align: center; font-size: 70px;">Article Graph Tool</p>'
         st.markdown(new_title, unsafe_allow_html=True)
 
-    c3, c4 = st.columns([0.4, 0.7])
+    
 
-    with c3:
-        st.markdown("""
-            ## Guide
-            
-            Example guide
 
-        """)
-
-    with c4:
-        cargar_animacion_lottie()
+    
+    cargar_animacion_lottie()
 
     # Sección "Novedades y Actualizaciones"
     st.markdown("""
@@ -119,13 +112,13 @@ def cargar_animacion_lottie():
     path = "app/images/animated/graph_2.json"
     with open(path, "r") as file:
         url_loan = json.load(file)
-
+    
 
     add_vertical_space(6)
     st_lottie(url_loan,
                 reverse=False,
-                height=500,
-                width=500,
+                height=800,
+                width=800,
                 speed=1,
                 loop=True,
                 quality='high',
