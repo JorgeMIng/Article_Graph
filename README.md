@@ -2,6 +2,7 @@
 
 [![Documentation Status](https://readthedocs.org/projects/article-graph-group-3/badge/?version=latest)](https://article-graph-group-3.readthedocs.io/en/latest/?badge=latest)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![DOI](https://zenodo.org/badge/785346462.svg)](https://zenodo.org/doi/10.5281/zenodo.11242795)
 
 Article_Graph is a tool that extracts and enriches information from a
 set of academic papers and journals.
