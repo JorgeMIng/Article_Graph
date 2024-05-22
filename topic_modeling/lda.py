@@ -81,11 +81,15 @@ class LDA:
 
         The result is available in `LDA.coherence`
         """
+        texts = [doc.split() for doc in self.corpus]
+        dictionary = Dictionary(texts)
+
         coherence_model = CoherenceModel(
-            topics=self.topics,
-            texts=[self.vectorizer.get_feature_names_out()],
-            dictionary=Dictionary([self.vectorizer.get_feature_names_out()]),
-            coherence="c_npmi",
+            model=self.model,
+            texts=texts,
+            dictionary=dictionary,
+            coherence='c_v',
+            topics=self.__get_topics(),
         )
         self.coherence = coherence_model.get_coherence()
 

@@ -1,5 +1,4 @@
 """
-This module provides 2 classes for topic modeling:
-1. LDA: Latent Dirichlet Allocation
-2. BERTopic: BERTopic
+This module provides 1 class for topic modeling:
+- LDA: Latent Dirichlet Allocation
 """
