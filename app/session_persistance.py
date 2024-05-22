@@ -12,7 +12,7 @@ def filter_dict(dict_input,keys_filter):
 
 def save_session_state():
     try:
-        file_path = os.path.join(os.path.dirname(__file__),"sessions","session_state.pkl")
+        file_path = os.path.join(os.path.dirname(__file__),"app","sessions","session_state.pkl")
         if os.path.exists(file_path):
             os.remove(file_path)
         with open(file_path, 'wb') as f:
@@ -26,7 +26,7 @@ def save_session_state():
 
 
 def load_session_state():
-    file_path = os.path.join(os.path.dirname(__file__),"sessions","session_state.pkl")
+    file_path = os.path.join(os.path.dirname(__file__),"app","sessions","session_state.pkl")
     print(file_path)
     if os.path.exists(file_path):
         try:
