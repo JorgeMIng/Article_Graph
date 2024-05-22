@@ -3,7 +3,7 @@
 [![Documentation Status](https://readthedocs.org/projects/article-graph-group-3/badge/?version=latest)](https://article-graph-group-3.readthedocs.io/en/latest/?badge=latest)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Article\_Graph is a tool that extracts and enriches information from a
+Article_Graph is a tool that extracts and enriches information from a
 set of academic papers and journals.
 
 It makes use of advanced and powerful machine learning tools to extract
@@ -12,7 +12,7 @@ Also, it uses [Grobid](https://grobid.readthedocs.io/en/latest/) to
 extract all the relevant information about the papers.
 
 The final output of this experiment is a RDF Graph that includes all the
-extracted and reconciled information about the papers and their relations. 
+extracted and reconciled information about the papers and their relations.
 
 A simple application is also available to visualize and interact with
 the KG.
@@ -29,7 +29,36 @@ follow the installation instructions
 you can follow the installation instructions
 [here](https://github.com/JorgeMIng/PDF_ArticleAnlyzer).
 
-## Running the Application with the KG in a Remote Server
+## Running the Application with Docker with the KG in a Remote Server
+
+If you want to try the application with the pregenerated graph under
+the `rdf` directory, here you will find all the instructions necessary for
+running it.
+
+1. Clone the repository:
+
+```
+git clone https://github.com/JorgeMIng/Article_Graph
+cd Article_Graph
+```
+
+2. Build the Docker image:
+
+```bash
+docker build -t graph_tool docker
+```
+
+3. Run the image:
+
+```bash
+docker run -p 8501:8501 graph_tool
+```
+
+By default, the KG generated in the `examples/article_graph.ipynb` is
+loaded in a remote server `http://yordi111nas.synology.me:3030/articles/query`.
+The graph is also available under the `rdf` directory.
+
+## Running the Application from Source with the KG in a Remote Server
 
 If you want to try the application with the pregenerated graph under
 the `rdf` directory, here you will find all the instructions necessary for
@@ -52,12 +81,11 @@ conda activate article-graph-3.11
 3. Install all the dependencies:
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements_app.txt
 ```
 
 4. Execute the application:
 
-<!-- TODO: Dockerize the Application -->
 ```bash
 python Start.py
 ```
@@ -87,7 +115,7 @@ conda activate article-graph-3.11
 3. Install all the dependencies:
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements_app.txt
 ```
 
 4. Host the KG in Jena Fuseki with Docker:
@@ -98,12 +126,11 @@ docker run -p 3030:3030 stain/jena-fuseki
 
 5. Execute the application:
 
-<!-- TODO: Dockerize the Application -->
 ```bash
 python Start.py
 ```
 
-6. Go to the *Settings* section and configure the remote server.
+6. Go to the _Settings_ section and configure the remote server.
 
 ## Running the Experiments
 
@@ -126,7 +153,6 @@ conda activate article-graph-3.11
 
 3. Install all the dependencies:
 
-<!-- TODO: Dockerize the Application -->
 ```bash
 pip install -r requirements.txt
 ```

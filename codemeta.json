@@ -4,12 +4,12 @@
   "license": "https://spdx.org/licenses/Apache-2.0",
   "codeRepository": "git+https://github.com/JorgeMIng/Article_Graph",
   "dateCreated": "2024-04-11",
-  "datePublished": "TODO",
-  "dateModified": "TODO",
+  "datePublished": "22-05-2024",
+  "dateModified": "22-05-2024",
   "name": "Article_Graph",
-  "version": "TODO",
+  "version": "1.0.0",
   "identifier": "TODO",
-  "description": "TODO",
+  "description": "Article_Graph is a tool that extracts and enriches information from a set of academic papers and journals. It makes use of advanced and powerful machine learning tools to extract as much information as possible. Also, it uses Grobid to extract all the relevant information about the papers. The final output of this experiment is a RDF Graph that includes all the extracted and reconciled information about the papers and their relations. A simple application is also available to visualize and interact with the KG.",
   "applicationCategory": "Research",
   "developmentStatus": "active",
   "keywords": [
@@ -29,17 +29,17 @@
   "author": [
     {
       "@type": "Person",
-      "@id": "TODO",
+      "@id": "https://orcid.org/0009-0005-7696-8995",
       "givenName": "Jorge",
       "familyName": "Martin",
-      "email": "TODO"
+      "email": "jorge.martin.izquierdo@alumnos.upm.es"
     },
     {
       "@type": "Person",
-      "@id": "TODO",
+      "@id": "https://orcid.org/0009-0004-8215-9978",
       "givenName": "Gloria",
       "familyName": "Cumia",
-      "email": "TODO"
+      "email": "gloria.cumia@alumnos.upm.es"
     },
     {
       "@type": "Person",
