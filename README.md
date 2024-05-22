@@ -146,5 +146,5 @@ Please refer to the `LICENSE` file.
 ## Authors
 
 - Jorge Martín Izquierdo
-- Gloria Cumia Espinosa
+- Gloria Cumia Espinosa de los Monteros
 - Marco Ciccalè Baztán
