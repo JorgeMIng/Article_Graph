@@ -34,6 +34,15 @@ def get_format(filename):
 # add files
 def add_files_to_crate(directory):
     for root, dirs, files in os.walk(directory):
+        if 'docs' in dirs:
+            dirs.remove('docs')
+
+        if '.git' in dirs:
+            dirs.remove('.git')
+
+        if '__pycache__' in dirs:
+            dirs.remove('__pycache__')
+
         for file in files:
             file_path = os.path.join(root, file)
             rel_path = os.path.relpath(file_path, directory)

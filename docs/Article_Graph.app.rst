@@ -1,6 +1,14 @@
 Article\_Graph.app package
 ==========================
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   Article_Graph.app.pages
+
 Submodules
 ----------
 
