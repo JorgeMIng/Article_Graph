@@ -48,6 +48,12 @@ def cargar_estado_session():
         st.session_state["port_value"]=get_default_value("port")
     if 'dataset_name_value' not in st.session_state:
         st.session_state["dataset_name_value"]=get_default_value("dataset_name")
+    if 'fuseki_wrapper' not in st.session_state:
+        try:
+            st.session_state["fuseki_wrapper"] = FusekiConection(st.session_state)
+        except Exception:
+            st.error("Server is not offline")
+            st.session_state["fuseki_wrapper"] = None
 
 def cargar_css():
     """
